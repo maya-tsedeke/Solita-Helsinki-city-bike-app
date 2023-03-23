@@ -1,0 +1,12 @@
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Domain\bin\Debug\net7.0\Backend.Domain.deps.json
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Domain\bin\Debug\net7.0\Backend.Domain.dll
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Domain\bin\Debug\net7.0\Backend.Domain.pdb
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Domain\obj\Debug\net7.0\Backend.Domain.csproj.AssemblyReference.cache
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Domain\obj\Debug\net7.0\Backend.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Domain\obj\Debug\net7.0\Backend.Domain.AssemblyInfoInputs.cache
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Domain\obj\Debug\net7.0\Backend.Domain.AssemblyInfo.cs
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Domain\obj\Debug\net7.0\Backend.Domain.csproj.CoreCompileInputs.cache
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Domain\obj\Debug\net7.0\Backend.Domain.dll
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Domain\obj\Debug\net7.0\refint\Backend.Domain.dll
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Domain\obj\Debug\net7.0\Backend.Domain.pdb
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Domain\obj\Debug\net7.0\ref\Backend.Domain.dll
