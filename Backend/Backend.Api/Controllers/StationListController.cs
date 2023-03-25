@@ -1,23 +1,17 @@
-﻿using AutoMapper;
-using Backend.Applications.Interfaces.Repositories;
-using Backend.Applications.Interfaces.Services;
+﻿using Backend.Applications.Interfaces.Services;
 using Backend.Domain.DTOs;
-using Backend.Domain.Entities;
-using Backend.Infrastructure.Repositories;
-using Backend.Infrastructure.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BikestationController : ControllerBase
+    public class StationListController : ControllerBase
     {
         private readonly IStationService _stationService; 
 
 
-        public BikestationController(IStationService stationService) 
+        public StationListController(IStationService stationService) 
         {
             _stationService = stationService;
         }

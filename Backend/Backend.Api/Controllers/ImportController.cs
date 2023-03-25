@@ -1,13 +1,5 @@
-﻿using AutoMapper;
-using Backend.Applications.Interfaces.Services;
-using Backend.Domain.DTOs;
-using Backend.Domain.Entities;
-using Backend.Domain.Request;
-using Backend.Infrastructure.Services;
-using Microsoft.AspNetCore.Http;
+﻿using Backend.Applications.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using static System.Collections.Specialized.BitVector32;
 
 namespace Backend.Api.Controllers
 {
@@ -17,13 +9,15 @@ namespace Backend.Api.Controllers
     {
         private readonly IStationService _stationService;
         private readonly IJourneyService _journeyService;
+        private readonly ILogger<ImportController> _logger;
 
-        public ImportController(IStationService stationService, IJourneyService journeyService)
+        public ImportController(IStationService stationService, IJourneyService journeyService, ILogger<ImportController> logger)
         {
             _stationService = stationService;
             _journeyService = journeyService;
+            _logger = logger;
         }
-        [HttpPost]
+        [HttpPost] 
         [Route("Journeys")]
         public async Task<IActionResult> ImportJourneysFromCsv(IFormFile file)
         {
@@ -37,28 +31,28 @@ namespace Backend.Api.Controllers
                 return BadRequest("Invalid file format.");
             }
 
+            var filePath = Path.GetTempFileName();
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
             try
             {
-                var filePath = Path.GetTempFileName();
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
 
-                var result = await _journeyService.ImportJourneysFromCsv(filePath);
-
-                if (result)
+                int success = await _journeyService.ImportJourneysFromCsv(filePath);
+                if (success > 0)
                 {
-                    return Ok();
+                    return StatusCode(StatusCodes.Status200OK, $"Successfully imported {success} rows.");
                 }
                 else
                 {
-                    return StatusCode(StatusCodes.Status500InternalServerError, "Failed to import journeys.");
+                    return StatusCode(StatusCodes.Status500InternalServerError, $"Failed to import data {success} .");
                 }
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, $"Failed to import journeys: {ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Failed to import data: {ex.Message}");
             }
         }
 
@@ -76,31 +70,30 @@ namespace Backend.Api.Controllers
                 return BadRequest("Invalid file format.");
             }
 
-            
-                var filePath = Path.GetTempFileName();
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
+            var filePath = Path.GetTempFileName();
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
 
-                var result = await _stationService.ImportJourneysFromCsv(filePath);
             try
             {
-                if (result)
+
+                int  success= await _stationService.ImportStationFromCsv(filePath);
+                if (success>0)
                 {
-                    return StatusCode(StatusCodes.Status200OK, $"Success to import journeys.{result}");
-                    // return Ok($"Successfully imported. {result}");
+                    return StatusCode(StatusCodes.Status200OK, $"Successfully imported {success} rows.");
                 }
                 else
                 {
-                 
-                    return StatusCode(StatusCodes.Status500InternalServerError, $"Failed to import journeys.{result}");
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Failed to import data.");
                 }
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, $"Failed to import journeys: {ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Failed to import data: {ex.Message}");
             }
-        } 
+        }
+
     }
 }

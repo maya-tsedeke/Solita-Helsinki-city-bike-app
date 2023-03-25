@@ -26,4 +26,10 @@ namespace Backend.Domain.DTOs
         public int Id { get; set; }
         public JIDRequestDto() { } 
     }
+    public class Top5StationViewModel
+    {
+        public int ID { get; set; }
+        public string StationName { get; set; }
+        public int JourneyCount { get; set; }
+    }
 }

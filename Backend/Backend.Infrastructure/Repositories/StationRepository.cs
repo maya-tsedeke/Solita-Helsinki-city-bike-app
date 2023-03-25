@@ -1,8 +1,11 @@
 ﻿using Backend.Applications.Interfaces.Repositories;
 using Backend.Domain.Entities;
 using Backend.Infrastructure.Persistence;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Data;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Backend.Infrastructure.Repositories
 {
@@ -13,7 +16,7 @@ namespace Backend.Infrastructure.Repositories
         {
             _dbContext = dbContext;
         }
-
+        public IDbConnection Connection => _dbContext.Database.GetDbConnection();
         public async Task<IEnumerable<Station>> ListStations(int limit, int offset, string orderBy, string search)
         {
             var query = _dbContext.Stations.AsQueryable();
@@ -66,6 +69,35 @@ namespace Backend.Infrastructure.Repositories
                 return false;
             }
         }
+
+        public async Task<IEnumerable<Station>> GetAllAsync()
+        {
+            return await _dbContext.Stations.ToListAsync();
+        }
+
+        public async Task<Station> GetByIdAsync(int id)
+        {
+            return await _dbContext.Stations.FindAsync(id);
+        }
+        public async Task<bool> BulkInsert(DataTable table)
+        {
+            using (var connection = _dbContext.Database.GetDbConnection() as SqlConnection)
+            {
+                await connection.OpenAsync();
+
+                using (var bulkCopy = new SqlBulkCopy(connection))
+                {
+                    bulkCopy.DestinationTableName = "Stations";
+                    // Set column mappings here
+                    await bulkCopy.WriteToServerAsync(table);
+                    return true;
+                }
+            }
+        }
+
+        //Single station
+
+
 
     }
 }

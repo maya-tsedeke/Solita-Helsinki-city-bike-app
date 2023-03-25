@@ -1,4 +1,5 @@
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Infrastructure\bin\Debug\net7.0\Backend.Infrastructure.deps.json
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Infrastructure\bin\Debug\net7.0\Backend.Infrastructure.runtimeconfig.json
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Infrastructure\bin\Debug\net7.0\Backend.Infrastructure.dll
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Infrastructure\bin\Debug\net7.0\Backend.Infrastructure.pdb
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Infrastructure\bin\Debug\net7.0\Backend.Applications.dll
@@ -14,6 +15,5 @@ C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.I
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Infrastructure\obj\Debug\net7.0\Backend.Infrastructure.dll
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Infrastructure\obj\Debug\net7.0\refint\Backend.Infrastructure.dll
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Infrastructure\obj\Debug\net7.0\Backend.Infrastructure.pdb
-C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Infrastructure\obj\Debug\net7.0\ref\Backend.Infrastructure.dll
-C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Infrastructure\bin\Debug\net7.0\Backend.Infrastructure.runtimeconfig.json
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Infrastructure\obj\Debug\net7.0\Backend.Infrastructure.genruntimeconfig.cache
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Infrastructure\obj\Debug\net7.0\ref\Backend.Infrastructure.dll

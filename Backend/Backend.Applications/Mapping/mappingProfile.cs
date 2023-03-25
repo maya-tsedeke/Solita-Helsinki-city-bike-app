@@ -17,7 +17,8 @@ namespace Backend.Applications.Mapping
             CreateMap<JIDRequestDto, Journey>();
             CreateMap<CSVDto, Journey>()
                 .ReverseMap();
-
+            CreateMap<StationDetailsDto, StationDto>()
+              .ReverseMap();
         }
     }
 }

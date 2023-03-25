@@ -17,12 +17,35 @@ namespace Backend.Domain.DTOs
         public double x { get; set; }
         public double y { get; set; }
         public StationDto() { }
+
 } 
     public class SIDRequestDto
     {
         public int ID { get; set; }
         public SIDRequestDto() { }
     }
-   
-    
+    public static class StationDtoExtensions
+    {
+        public static string[] ToStringArray(this StationDto dto)
+        {
+            return new string[] {
+            dto.FID.ToString(),
+            dto.ID.ToString(),
+            dto.Nimi,
+            dto.Namn,
+            dto.Name,
+            dto.Osoite,
+            dto.Address,
+            dto.Kaupunki,
+            dto.Stad,
+            dto.Operaattor,
+            dto.Kapasiteet.ToString(),
+            dto.x.ToString(),
+            dto.y.ToString()
+        };
+        }
+    }
+
+
+
 }
