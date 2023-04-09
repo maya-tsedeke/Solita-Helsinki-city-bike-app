@@ -5,7 +5,7 @@ using Backend.Domain.DTOs;
 using Backend.Domain.Entities;
 using Backend.Infrastructure.Repositories;
 using Backend.Infrastructure.Services;
-
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OpenQA.Selenium;
 
@@ -24,12 +24,14 @@ namespace Backend.Api.Controllers
           
         }
         [HttpGet]
+        [Authorize]
         public async Task<IEnumerable<JourneyDto>> ListJourneys(int limit = 100, int offset = 0, string orderBy = null, string search = null)
         {
             var journeys = await _journeyService.ListJourneys(limit, offset, orderBy, search);
             return journeys;
         }
         [HttpPost("Add")]
+        [Authorize]
         public async Task<IActionResult> AddJourney([FromBody] CreateJourneyDepartureDto request)
         {
             try
@@ -107,6 +109,7 @@ namespace Backend.Api.Controllers
             }
         }
         [HttpPut("{journeyId:int}/return")]
+        [Authorize]
         public async Task<IActionResult> UpdateJourneyReturnInfo(int journeyId, [FromBody] UpdateJourneyReturnDto request)
         {
             try
@@ -195,6 +198,7 @@ namespace Backend.Api.Controllers
             public int UserId { get; set; }
         }
         [HttpGet("{journId}")]
+        [Authorize]
         public async Task<IActionResult> GetTripByJourneyId(int journId)
         {
             try
@@ -269,6 +273,7 @@ namespace Backend.Api.Controllers
             }
         }
         [HttpGet("{userId:int}/User")]
+        [Authorize]
         public async Task<IEnumerable<JourneyDto>> GetJourneysByUserId(int userId)
         {
             try

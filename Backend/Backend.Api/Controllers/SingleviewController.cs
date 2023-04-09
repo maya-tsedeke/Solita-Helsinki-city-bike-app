@@ -1,6 +1,7 @@
 ﻿using Backend.Applications.Interfaces.Services;
 using Backend.Domain.DTOs;
 using Backend.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Api.Controllers
@@ -17,7 +18,9 @@ namespace Backend.Api.Controllers
             _journeyService = journeyService;
             _stationService = stationService;
         }
+
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult> Get(int id, int? month)
         {
             var station = await _stationService.GetStationByIdAsync(id);

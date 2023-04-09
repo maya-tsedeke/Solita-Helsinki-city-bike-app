@@ -1,4 +1,5 @@
 ﻿using Backend.Applications.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Api.Controllers
@@ -19,6 +20,7 @@ namespace Backend.Api.Controllers
         }
         [HttpPost]
         [Route("Journeys")]
+        [Authorize]
         public async Task<IActionResult> ImportJourneysFromCsv(IFormFile file)
         {
             if (file == null || file.Length == 0)
@@ -65,6 +67,7 @@ namespace Backend.Api.Controllers
 
         [HttpPost]
         [Route("Stations")]
+        [Authorize]
         public async Task<IActionResult> ImportStationsFromCsv(IFormFile file)
         {
             if (file == null || file.Length == 0)

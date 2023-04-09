@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
 
@@ -8,67 +8,66 @@ import { tap } from 'rxjs';
 })
 export class AuthService {
 
-  private baseUrl:string="https://localhost:44302/api/User/";
-  constructor(private http:HttpClient,private router:Router) { }
-  signUp(signupObj:any){
-    return this.http.post<any>(`${this.baseUrl}register`,signupObj)
+  private baseUrl: string = "https://localhost:44302/api/User/";
+  constructor(private http: HttpClient, private router: Router) { }
+  signUp(signupObj: any) {
+    return this.http.post<any>(`${this.baseUrl}register`, signupObj)
   }
-  login(loginObj:any){
-    return this.http.post<any>(`${this.baseUrl}authenticate`,loginObj)
-    .pipe(
-      tap((res) => {
-        this.storeToken(res.token);
-        this.storeUserId(res.id);
-        this.setUserName(res.username)
-      })
-    );
+  login(loginObj: any) {
+    return this.http.post<any>(`${this.baseUrl}authenticate`, loginObj)
+      .pipe(
+        tap((res) => {
+          this.storeToken(res.token);
+          this.storeUserId(res.id);
+          this.setUserName(res.username)
+        })
+      );
   }
-  signOut(){
+  signOut() {
     localStorage.clear();
     sessionStorage.clear();
     this.router.navigate(['/login']);
   }
   storeToken(tokenValue: string) {
     localStorage.setItem('token', tokenValue);
-   
+
   }
-  getToken()
-  {
+  getToken() {
     return localStorage.getItem('token')
   }
-//storeSession
-private userIdKey = 'id';
-private userNameKey='username';
-storeUserId(userId: number) {
-  sessionStorage.setItem(this.userIdKey, userId.toString());
-}
-
-getUserId(): number {
-  const userId = sessionStorage.getItem(this.userIdKey);
-  
-  return userId ? +userId:0
-}
-
-updateUserId(userId: number) {
-  
-  sessionStorage.setItem(this.userIdKey, userId.toString());
-}
-
-getUserName(): string {
-  const userName = sessionStorage.getItem(this.userNameKey);
-
-  if (userName === null) {
-    return ''; // or any other default value 
+  //storeSession
+  private userIdKey = 'id';
+  private userNameKey = 'username';
+  storeUserId(userId: number) {
+    sessionStorage.setItem(this.userIdKey, userId.toString());
   }
 
-  return userName;
-}
+  getUserId(): number {
+    const userId = sessionStorage.getItem(this.userIdKey);
 
-setUserName(userName: string) {
-  sessionStorage.setItem(this.userNameKey, userName.toString());
-}
-  isLoggedIn():boolean{
-    return !!localStorage.getItem('token') ;
+    return userId ? +userId : 0
+  }
+
+  updateUserId(userId: number) {
+
+    sessionStorage.setItem(this.userIdKey, userId.toString());
+  }
+
+  getUserName(): string {
+    const userName = sessionStorage.getItem(this.userNameKey);
+
+    if (userName === null) {
+      return ''; // or any other default value 
+    }
+
+    return userName;
+  }
+
+  setUserName(userName: string) {
+    sessionStorage.setItem(this.userNameKey, userName.toString());
+  }
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
   }
 }
 

@@ -17,12 +17,12 @@ const routes: Routes = [
   {path:'signup',component:SignupComponent, data: { title: 'User SignUp' }},
   {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard], data: { title: 'User Dashboard' }},
   { path: '', redirectTo: 'login', pathMatch: 'full',data: { title: 'User Login' }},
-  { path: 'report/:id', component: StationDetailsComponent,data: { title: 'Single view and Location on the map' }},
-  {path:'station-list',component:ListStationComponent, data: { title: 'Bike station list' }},
-  {path:'creat-station',component:CreatStationComponent, data: { title: 'Create new station' }},
-  { path: 'update-station/:id', component: CreatStationComponent,data: { title: 'Update existing Station Details' }},
-  { path: 'import', component: ImportComponent,data: { title: 'Import station or Journey' }},
-  { path: 'journey', component: JourneysComponent,data: { title: 'Customer Service' }},
+  { path: 'report/:id', component: StationDetailsComponent,canActivate:[AuthGuard],data: { title: 'Single view and Location on the map' }},
+  {path:'station-list',component:ListStationComponent, canActivate:[AuthGuard],data: { title: 'Bike station list' }},
+  {path:'creat-station',component:CreatStationComponent, canActivate:[AuthGuard],data: { title: 'Create new station' }},
+  { path: 'update-station/:id', component: CreatStationComponent,canActivate:[AuthGuard],data: { title: 'Update existing Station Details' }},
+  { path: 'import', component: ImportComponent,canActivate:[AuthGuard],data: { title: 'Import station or Journey' }},
+  { path: 'journey', component: JourneysComponent,canActivate:[AuthGuard],data: { title: 'Customer Service' }},
   
 ];
 

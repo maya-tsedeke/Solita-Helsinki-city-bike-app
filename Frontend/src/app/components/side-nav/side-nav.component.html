@@ -7,7 +7,12 @@
                 <a routerLink="{{item.routerLink}}">{{item.name}}</a>
             </span>
         </li>
-
+        <li class="nav-list-item "  *ngIf="isLoggedIn()">
+            <i class="fa fa-power-off"></i>
+            <span>
+                <a (click)="logOut()">Logout</a>
+            </span>
+        </li>
         
     </ul>
 </div>

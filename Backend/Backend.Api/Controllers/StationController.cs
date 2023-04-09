@@ -3,6 +3,7 @@ using Backend.Applications.Interfaces.Repositories;
 using Backend.Applications.Interfaces.Services;
 using Backend.Domain.DTOs;
 using Backend.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using static System.Collections.Specialized.BitVector32;
@@ -20,6 +21,7 @@ namespace Backend.Api.Controllers
             _stationService = stationService;
         }
         [HttpPost("Create")]
+        [Authorize]
         public async Task<IActionResult> CreateStation([FromBody] StationDto stationDto)
         {
             try
@@ -34,6 +36,7 @@ namespace Backend.Api.Controllers
             }
         }
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> GetStation(int id)
         {
             try
@@ -54,6 +57,7 @@ namespace Backend.Api.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> UpdateStation(int id, [FromBody] StationDto stationDto)
         {
             try
@@ -67,6 +71,7 @@ namespace Backend.Api.Controllers
             }
         }
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteStation(int id) 
         {
             try

@@ -1,5 +1,6 @@
 ﻿using Backend.Applications.Interfaces.Services;
 using Backend.Domain.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Api.Controllers
@@ -16,12 +17,14 @@ namespace Backend.Api.Controllers
             _stationService = stationService;
         }
         [HttpGet("Filter")]
+        [Authorize]
         public async Task<IEnumerable<StationDto>> ListStation(int limit = 100, int offset = 1, string orderBy = null, string search = null)
         {
             var journeys = await _stationService.ListStations(limit, offset, orderBy, search);
             return journeys;
         }
         [HttpGet("{stationId}")]
+        [Authorize]
         public async Task<ActionResult<StationDto>> GetStation(int stationId)
         {
             var station = await _stationService.GetStation(stationId);
@@ -34,6 +37,7 @@ namespace Backend.Api.Controllers
             return Ok(station);
         }
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<List<addressDto>>> GetStations(string ids)
         {
             try

@@ -16,11 +16,11 @@ export class SideNavComponent implements OnInit {
 
   loggedInList = [
     { number: '1', name: 'home', icon: 'fas fa-tachometer-alt', routerLink: '/dashboard' }, 
-      { number: '3', name: 'Import', icon: 'bi bi-upload', routerLink: '/import' }, 
-      { number: '7', name: 'Create', icon: 'fas fa-bicycle', routerLink: 'creat-station' }, 
-    { number: '2', name: 'return', icon: 'fas fa-biking', routerLink: '/journey' }, 
+      { number: '3', name: 'Import', icon: 'fa fa-upload', routerLink: '/import' }, 
+      { number: '7', name: 'Create', icon: 'fas fa-add', routerLink: 'creat-station' }, 
+    { number: '2', name: 'return', icon: 'fas fa-bicycle', routerLink: '/journey' }, 
     { number: '8', name: 'Map', icon: 'fas fa-map-marker-alt', routerLink: '/station-list' },
-    { number: '4', name: 'Logout', icon: 'fa fa-power-off', routerLink: '/user' }, 
+  
   ];
 
   constructor(private router: Router, private auth: AuthService) { }
@@ -32,5 +32,8 @@ export class SideNavComponent implements OnInit {
   }
   isLoggedIn(): boolean {
     return this.auth.isLoggedIn();
+  }
+  logOut(): void {
+    this.auth.signOut();
   }
 }
