@@ -344,13 +344,14 @@ namespace Backend.Api.Controllers
 
                 return responseList;
             }
-            catch (NotFoundException ex)
+            catch (NotFoundException)
             {
-                return (IEnumerable<JourneyDto>)NotFound(ex.Message);
+
+                return Enumerable.Empty<JourneyDto>();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return (IEnumerable<JourneyDto>)BadRequest(new { message = ex.Message });
+                return Enumerable.Empty<JourneyDto>();
             }
         }
 

@@ -1,13 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "89ca68YlrrixH74MtvoJTUHFiTlIV59cB8YOCDJ9nIrZpDdrnKsyxeLa/o2IAIHrWbPT0MsjwSRQiMZJ8agwjA==",
+  "dgSpecHash": "mFYxBjSnaf8mtI315IdGsjjPlrf7f3AjSJwkfsnP3zgPBCawEUuKdK4TLLfn8fG86YpJRGlRdO+7Rj56KeA+Pg==",
   "success": true,
   "projectFilePath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\Backend.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tshabe\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\tshabe\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\tshabe\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
+    "C:\\Users\\tshabe\\.nuget\\packages\\azure.extensions.aspnetcore.configuration.secrets\\1.0.0\\azure.extensions.aspnetcore.configuration.secrets.1.0.0.nupkg.sha512",
     "C:\\Users\\tshabe\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\tshabe\\.nuget\\packages\\azure.security.keyvault.secrets\\4.0.1\\azure.security.keyvault.secrets.4.0.1.nupkg.sha512",
     "C:\\Users\\tshabe\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
     "C:\\Users\\tshabe\\.nuget\\packages\\fluentassertions\\6.10.0\\fluentassertions.6.10.0.nupkg.sha512",
     "C:\\Users\\tshabe\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",

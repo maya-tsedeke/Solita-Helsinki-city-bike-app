@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "secrets2": {
+      "restored": true,
+      "restoreTime": "2023-04-09T21:46:44.6117Z"
+    },
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2023-04-09T21:33:59.3980558Z"
+    },
+    "secrets1": {
+      "restored": true,
+      "restoreTime": "2023-04-09T21:31:37.6711644Z"
+    }
+  },
+  "parameters": {
+    "secrets2.resourceGroupName": {
+      "Name": "secrets2.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "Backendapi"
+    },
+    "secrets2.subscriptionId": {
+      "Name": "secrets2.subscriptionId",
+      "Type": "subscription",
+      "Value": "df9d8a7b-fe7f-4206-a937-98263c660cb3"
+    }
+  }
+}

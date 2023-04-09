@@ -3,6 +3,7 @@ C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.A
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\obj\Debug\net7.0\Backend.Api.AssemblyInfoInputs.cache
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\obj\Debug\net7.0\Backend.Api.AssemblyInfo.cs
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\obj\Debug\net7.0\Backend.Api.csproj.CoreCompileInputs.cache
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\obj\Debug\net7.0\Backend.Api.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\obj\Debug\net7.0\Backend.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\bin\Debug\net7.0\appsettings.json
@@ -17,7 +18,9 @@ C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.A
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\bin\Debug\net7.0\AutoMapper.dll
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\bin\Debug\net7.0\Azure.Core.dll
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\bin\Debug\net7.0\Azure.Extensions.AspNetCore.Configuration.Secrets.dll
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\bin\Debug\net7.0\Azure.Identity.dll
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\bin\Debug\net7.0\Azure.Security.KeyVault.Secrets.dll
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\bin\Debug\net7.0\CsvHelper.dll
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\bin\Debug\net7.0\FluentAssertions.dll
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\bin\Debug\net7.0\FluentValidation.dll

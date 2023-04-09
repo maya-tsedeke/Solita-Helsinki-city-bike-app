@@ -12,12 +12,18 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.FileProviders;
+using FluentAssertions.Common;
+using System;
+using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //Register DBcontext
 builder.Services.AddDbContext<AppDbcontext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+//builder.Services.AddDbContext<AppDbcontext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+//    b => b.MigrationsAssembly("Backend.Api")));
 // Inject IConfiguration
 builder.Services.AddSingleton(builder.Configuration);
 
@@ -116,6 +122,15 @@ app.UseHttpsRedirection();
 app.UseCors("MyPolicy");
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseDefaultFiles();
+app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), @"..\Frontend\dist\frontend")),
+    RequestPath = "/dashboard"
+});
 
 app.MapControllers();
 

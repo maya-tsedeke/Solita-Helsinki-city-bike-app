@@ -25,16 +25,24 @@ namespace Backend.Api.Controllers
         [HttpPost("authenticate")]
         public async Task<IActionResult> AuthenticateAsync(AuthenticateRequest request)
         {
-            var userDto = await _userService.AuthenticateAsync(request.Username, request.Password);
-
-            if (userDto == null)
+            try
             {
-                return BadRequest(new { message = "Username or password is incorrect" });
-            }
+                var userDto = await _userService.AuthenticateAsync(request.Username, request.Password);
 
-            var token = _userService.GenerateJwtToken(userDto.Username);
-            var loginResponse = new AuthResponse(userDto.Id, userDto.Username, token);
-            return Ok(loginResponse);
+                if (userDto == null)
+                {
+                    return BadRequest(new { message = "Username or password is incorrect" });
+                }
+
+                var token = _userService.GenerateJwtToken(userDto.Username);
+                var loginResponse = new AuthResponse(userDto.Id, userDto.Username, token);
+                return Ok(loginResponse);
+            }
+            catch (Exception ex)
+            {
+             
+                throw; // Rethrow the exception so it can be caught by the calling method
+            }
         }
 
         [HttpPost("register")]
@@ -84,7 +92,7 @@ namespace Backend.Api.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
-        [Authorize]
+        
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
