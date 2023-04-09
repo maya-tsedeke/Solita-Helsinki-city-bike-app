@@ -8,7 +8,7 @@ namespace Backend.Infrastructure.Persistence
     {
         public DbSet<Journey> Journeys { get; set; }
         public DbSet<Station> Stations { get; set; }
-       
+        public DbSet<User> Users { get; set; }
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
         //    optionsBuilder.UseSqlServer("DefaultConnection");
@@ -39,8 +39,9 @@ namespace Backend.Infrastructure.Persistence
                 .WithMany(s => s.ReturnJourneys)
                 .HasForeignKey(j => j.ReturnStationId)
                 .OnDelete(DeleteBehavior.NoAction);
-            
- 
+            modelBuilder.Entity<User>()
+         .HasKey(u => u.Id);
+
         }
     }
     

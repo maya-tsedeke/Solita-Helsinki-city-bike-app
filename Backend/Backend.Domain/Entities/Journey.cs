@@ -15,10 +15,16 @@ public class Journey
     public DateTime Departure { get; set; }
     public DateTime Return { get; set; }
     public int DepartureStationId { get; set; }
-    public int ReturnStationId { get; set; }
-    public int CoveredDistanceInMeters { get; set; }
-    public int DurationInSeconds { get; set; }
-
+    public int? ReturnStationId { get; set; }
+    public double CoveredDistanceInMeters { get; set; }
+    public double DurationInSeconds { get; set; }
+    public int? UserId { get; set; }
+    [ForeignKey(nameof(DepartureStationId))]
     public virtual Station DepartureStation { get; set; }
+
+    [ForeignKey(nameof(ReturnStationId))]
     public virtual Station ReturnStation { get; set; }
+
+    [ForeignKey(nameof(UserId))]
+    public virtual User users { get; set; }
 }

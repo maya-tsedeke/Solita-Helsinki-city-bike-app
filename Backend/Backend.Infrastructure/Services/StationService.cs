@@ -3,6 +3,7 @@ using Backend.Applications.Interfaces.Repositories;
 using Backend.Applications.Interfaces.Services;
 using Backend.Domain.DTOs;
 using Backend.Domain.Entities;
+using Backend.Domain.Validation;
 using Backend.Infrastructure.Repositories;
 using CsvHelper;
 using CsvHelper.Configuration;
@@ -20,16 +21,27 @@ namespace Backend.Infrastructure.Services
         private readonly IStationRepository _stationRepository;
         private readonly IMapper _mapper;
         private readonly IJourneyRepository _journeyRepository;
-       
 
-        public StationService(IStationRepository stationRepository, IMapper mapper,IJourneyRepository journeyRepository)
+
+        public StationService(IStationRepository stationRepository, IMapper mapper, IJourneyRepository journeyRepository)
         {
             _stationRepository = stationRepository;
             _mapper = mapper;
-            _journeyRepository= journeyRepository;
-       
+            _journeyRepository = journeyRepository;
+
         }
-  
+        //Dsiplay many ids using array
+        public async Task<List<addressDto>> GetStationsByIdsAsync(IEnumerable<string> ids)
+        {
+            var stations = await _stationRepository.GetStationsByIdsAsync(ids);
+            return stations.Select(s => new addressDto
+            {
+                ID = s.ID,
+                Name = s.Name,
+                Address = s.Address
+            }).ToList();
+        }
+
         public async Task<IEnumerable<StationDto>> ListStations(int limit = 100, int offset = 0, string orderBy = null, string search = null)
         {
             var stations = await _stationRepository.ListStations(limit, offset, orderBy, search);
@@ -101,6 +113,67 @@ namespace Backend.Infrastructure.Services
 
             return dataTable.Rows.Count ;
            
+        }
+        public async Task<StationDto> CreateStationAsync(StationDto stationDto)
+        {  // Validate the stationDto
+            var validator = new StationValidator();
+            var validationResult = await validator.ValidateAsync(stationDto);
+            if (!validationResult.IsValid)
+            {
+                throw new FluentValidation.ValidationException(validationResult.Errors);
+            }
+            // Map the StationDto to a Station entity
+            var station = _mapper.Map<Station>(stationDto);
+
+            // Add the new station to the database
+            await _stationRepository.AddAsync(station);
+
+            // Map the created Station entity back to a StationDto and return it
+            return _mapper.Map<StationDto>(station);
+        }
+
+        public async Task<StationDto> UpdateStationAsync(int stationId, StationDto stationDto)
+        {// Validate the stationDto
+            var validator = new StationValidator();
+            var validationResult = await validator.ValidateAsync(stationDto);
+            if (!validationResult.IsValid)
+            {
+                throw new FluentValidation.ValidationException(validationResult.Errors);
+            }
+            // Find the existing station in the database
+            var existingStation = await _stationRepository.GetByIdAsync(stationDto.ID);
+
+            // If the station doesn't exist, throw an exception
+            if (existingStation == null)
+            {
+                throw new Exception("Station not found.");
+            }
+
+            // Map the updated StationDto to the existing Station entity
+            _mapper.Map(stationDto, existingStation);
+
+            // Update the station in the database
+            await _stationRepository.UpdateAsync(existingStation);
+
+            // Map the updated Station entity back to a StationDto and return it
+            return _mapper.Map<StationDto>(existingStation);
+        }
+
+        public async Task <bool> DeleteStationAsync(int id)
+        {
+            // Find the existing station in the database
+            var existingStation = await _stationRepository.GetByIdAsync(id);
+
+            // If the station doesn't exist, return false
+            if (existingStation == null)
+            {
+                return false;
+            }
+
+            // Delete the station from the database
+            await _stationRepository.DeleteAsync(existingStation);
+
+            return true;
         }
 
         //Single station View 
@@ -188,6 +261,5 @@ namespace Backend.Infrastructure.Services
 
             return results;
         }
-
     }
 }

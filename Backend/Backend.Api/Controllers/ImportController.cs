@@ -17,7 +17,7 @@ namespace Backend.Api.Controllers
             _journeyService = journeyService;
             _logger = logger;
         }
-        [HttpPost] 
+        [HttpPost]
         [Route("Journeys")]
         public async Task<IActionResult> ImportJourneysFromCsv(IFormFile file)
         {
@@ -43,18 +43,25 @@ namespace Backend.Api.Controllers
                 int success = await _journeyService.ImportJourneysFromCsv(filePath);
                 if (success > 0)
                 {
-                    return StatusCode(StatusCodes.Status200OK, $"Successfully imported {success} rows.");
+                    var message = $"Successfully imported {success} rows.";
+                    var response = new { message = message };
+                    return Ok(response);
                 }
                 else
                 {
-                    return StatusCode(StatusCodes.Status500InternalServerError, $"Failed to import data {success} .");
+                    var message = $"Failed to import data {success}.";
+                    var response = new { message = message };
+                    return StatusCode(StatusCodes.Status500InternalServerError, response);
                 }
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, $"Failed to import data: {ex.Message}");
+                var message = $"Failed to import data: {ex.Message}";
+                var response = new { message = message };
+                return StatusCode(StatusCodes.Status500InternalServerError, response);
             }
         }
+
 
         [HttpPost]
         [Route("Stations")]
@@ -79,10 +86,11 @@ namespace Backend.Api.Controllers
             try
             {
 
-                int  success= await _stationService.ImportStationFromCsv(filePath);
-                if (success>0)
+                int success = await _stationService.ImportStationFromCsv(filePath);
+                if (success > 0)
                 {
-                    return StatusCode(StatusCodes.Status200OK, $"Successfully imported {success} rows.");
+                    var response = new { message = $"Successfully imported {success} rows." };
+                    return StatusCode(StatusCodes.Status200OK, response);
                 }
                 else
                 {
@@ -94,6 +102,7 @@ namespace Backend.Api.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, $"Failed to import data: {ex.Message}");
             }
         }
+
 
     }
 }

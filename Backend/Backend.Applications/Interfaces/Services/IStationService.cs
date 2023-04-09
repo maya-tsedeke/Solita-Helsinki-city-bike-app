@@ -5,11 +5,14 @@ namespace Backend.Applications.Interfaces.Services
 {
     public interface IStationService
     {
+ 
         Task<IEnumerable<StationDto>> ListStations(int limit = 100, int offset = 0, string orderBy = null, string search = null);
         Task<StationDto> GetStation(int stationId);
-        Task<int> ImportStationFromCsv(string filePath); 
-
-
+        Task<int> ImportStationFromCsv(string filePath);
+        Task<List<addressDto>> GetStationsByIdsAsync(IEnumerable<string> stationIds); 
+        Task<StationDto> CreateStationAsync(StationDto stationDto);
+        Task<StationDto> UpdateStationAsync(int stationId, StationDto stationDto);
+        Task <bool> DeleteStationAsync(int stationId); 
         //Single View
         Task<IEnumerable<Station>> GetAllStationsAsync();
         Task<Station> GetStationByIdAsync(int id);

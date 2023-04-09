@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Backend.Applications.Interfaces.Repositories;
+using Backend.Applications.Interfaces.Services;
 using Backend.Domain.DTOs;
 using Backend.Domain.Entities;
 using Microsoft.AspNetCore.Http;
@@ -12,15 +13,80 @@ namespace Backend.Api.Controllers
     [ApiController]
     public class StationController : ControllerBase
     {
-        private readonly IStationRepository _stationRepository;
-        private IMapper _mapper;
+        private readonly IStationService _stationService;
 
-        public StationController(IStationRepository stationRepository, IMapper mapper)
+        public StationController(IStationService stationService)
         {
-            _stationRepository = stationRepository;
-            _mapper = mapper;
+            _stationService = stationService;
         }
-       
+        [HttpPost("Create")]
+        public async Task<IActionResult> CreateStation([FromBody] StationDto stationDto)
+        {
+            try
+            {
+                var station = await _stationService.CreateStationAsync(stationDto);
+
+                return CreatedAtAction(nameof(GetStation), new { id = station.ID }, station);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetStation(int id)
+        {
+            try
+            {
+                var station = await _stationService.GetStationByIdAsync(id);
+
+                if (station == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(station);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateStation(int id, [FromBody] StationDto stationDto)
+        {
+            try
+            {
+                await _stationService.UpdateStationAsync(id, stationDto);
+                return Ok(new { message = "Station updated successfully." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteStation(int id) 
+        {
+            try
+            {
+                var result = await _stationService.DeleteStationAsync(id);
+
+                if (result)
+                {
+                    return Ok(new { message = "Station deleted successfully." });
+                }
+                else
+                {
+                    return BadRequest(new { message = "Station not found." });
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
 
     }
 }

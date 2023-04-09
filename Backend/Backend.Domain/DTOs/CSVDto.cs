@@ -17,8 +17,8 @@ namespace Backend.Domain.DTOs
         public int ReturnStationId { get; set; }
         [Ignore]
         public string ReturnStation { get; set; }
-        public int CoveredDistanceInMeters { get; set; }
-        public int DurationInSeconds { get; set; }
+        public double CoveredDistanceInMeters { get; set; }
+        public double DurationInSeconds { get; set; }
         public CSVDto() { }
     }
     public static class JourneyDtoExtensions

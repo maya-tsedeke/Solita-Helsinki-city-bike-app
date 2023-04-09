@@ -6,6 +6,7 @@ using Backend.Infrastructure.Persistence;
 using CsvHelper;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using OpenQA.Selenium;
 using System;
 using System.Data;
 using System.Globalization;
@@ -93,9 +94,64 @@ namespace Backend.Infrastructure.Repositories
                     return true;
                 }
             }
+        } 
+        public async Task<IEnumerable<Station>> GetStations()
+        {
+            return await _dbContext.Stations.ToListAsync();
         }
 
+        public async Task<Station> GetStation(int stationId)
+        {
+            return await _dbContext.Stations.FindAsync(stationId);
+        }
+        //Get by Journey ID
+        public async Task<Journey> GetJourneyById(int journyId) 
+        {
+            var journey = await _dbContext.Journeys.FindAsync(journyId);
+            if (journey != null)
+            {
+                journey.users = await _dbContext.Users.FindAsync(journey.UserId);
+            }
+            return journey;
+        }
+        //Get by userName
+        public async Task<IEnumerable<Journey>> GetJourneysByUserId(int userId)
+        {
+            return await _dbContext.Journeys
+                .Where(j => j.UserId == userId)
+                .ToListAsync();
+        }
+        public async Task AddJourney(Journey journey)
+        {
+            _dbContext.Journeys.Add(journey);
+           
+            try
+            {
+                // Call a method that saves changes to the database
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Get the inner exception if there is one
+                Exception innerEx = ex.InnerException;
 
+                // Loop through inner exceptions to get the root cause of the error
+                while (innerEx != null && innerEx.InnerException != null)
+                {
+                    innerEx = innerEx.InnerException;
+                }
+
+                // Log or handle the error
+                Console.WriteLine($"Error: {innerEx?.Message}");
+            }
+        }
+        public async Task UpdateJourney(Journey journey)
+        {
+            _dbContext.Entry(journey).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
+        }
+
+     
         //Single view
         public async Task<IEnumerable<Journey>> GetAllAsync()
         {

@@ -1,6 +1,4 @@
-﻿using Backend.Domain.Request;
-
-namespace Backend.Applications.Interfaces.Services
+﻿namespace Backend.Applications.Interfaces.Services
 {
     public interface ICSV_ImportService<T>
     {

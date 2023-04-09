@@ -14,10 +14,12 @@ namespace Backend.Domain.DTOs
         public DateTime Return { get; set; }
         public int DepartureStationId { get; set; }
         public int ReturnStationId { get; set; }
-        public int CoveredDistanceInMeters { get; set; }
-        public int DurationInSeconds { get; set; }
+        public double CoveredDistanceInMeters { get; set; }
+        public double DurationInSeconds { get; set; }
+        public int UserId { get; set; }
         public StationDto DepartureStation { get; set; }
         public StationDto ReturnStation { get; set; }
+        public UserDto users { get; set; } 
         public JourneyDto() { }
 
     }

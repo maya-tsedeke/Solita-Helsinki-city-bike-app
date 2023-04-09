@@ -17,6 +17,11 @@ namespace Backend.Infrastructure.Repositories
             _dbContext = dbContext;
         }
         public IDbConnection Connection => _dbContext.Database.GetDbConnection();
+        public async Task<List<Station>> GetStationsByIdsAsync(IEnumerable<string> ids)
+        {
+            return await _dbContext.Stations.Where(s => ids.Contains(s.ID.ToString())).ToListAsync();
+        }
+
         public async Task<IEnumerable<Station>> ListStations(int limit, int offset, string orderBy, string search)
         {
             var query = _dbContext.Stations.AsQueryable();
@@ -25,7 +30,8 @@ namespace Backend.Infrastructure.Repositories
             {
                 query = query.Where(s =>
                     s.Name.Contains(search) ||
-                    s.Address.Contains(search)
+                    s.Address.Contains(search)||
+                    s.ID.ToString().Contains(search)
                 );
             }
 
@@ -94,10 +100,26 @@ namespace Backend.Infrastructure.Repositories
                 }
             }
         }
+        public async Task<int> AddAsync(Station station)
+        {
+            _dbContext.Stations.Add(station);
+            await _dbContext.SaveChangesAsync();
+            return station.ID;
+        }
 
-        //Single station
+        public async Task<bool> UpdateAsync(Station station)
+        {
+            _dbContext.Entry(station).State = EntityState.Modified;
+            return await _dbContext.SaveChangesAsync() > 0;
+        }
 
+        public async Task<bool> DeleteAsync(Station station)
+        {
+            var result = await GetByIdAsync(station.ID);
+            if (result == null) return false;
 
-
+            _dbContext.Stations.Remove(result);
+            return await _dbContext.SaveChangesAsync() > 0;
+        }
     }
 }

@@ -9,6 +9,16 @@ namespace Backend.Applications.Interfaces.Repositories
         Task<IEnumerable<Journey>> ListJourneys(int limit, int offset, string orderBy, string search);
         Task<bool> ImportJourneys(IEnumerable<Journey> journeys);
         Task<bool> BulkInsert(DataTable table);
+        //Add journey for customer
+        Task<IEnumerable<Station>> GetStations();
+        Task<Station> GetStation(int stationId);
+        Task AddJourney(Journey journey);
+        //create departure info
+        Task<Journey> GetJourneyById(int journeyId);
+        //GetJourney by person
+        Task<IEnumerable<Journey>> GetJourneysByUserId(int userId);
+        //Update the return info
+        Task UpdateJourney(Journey journey);
         //Single View 
         Task<IEnumerable<Journey>> GetAllAsync();
         Task<IEnumerable<Journey>> GetByMonthAsync(int month);

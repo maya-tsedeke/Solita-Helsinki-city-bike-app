@@ -30,8 +30,8 @@ namespace Backend.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CoveredDistanceInMeters")
-                        .HasColumnType("int");
+                    b.Property<double>("CoveredDistanceInMeters")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("Departure")
                         .HasColumnType("datetime2");
@@ -39,13 +39,16 @@ namespace Backend.Infrastructure.Migrations
                     b.Property<int>("DepartureStationId")
                         .HasColumnType("int");
 
-                    b.Property<int>("DurationInSeconds")
-                        .HasColumnType("int");
+                    b.Property<double>("DurationInSeconds")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("Return")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ReturnStationId")
+                    b.Property<int?>("ReturnStationId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -53,6 +56,8 @@ namespace Backend.Infrastructure.Migrations
                     b.HasIndex("DepartureStationId");
 
                     b.HasIndex("ReturnStationId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Journeys");
                 });
@@ -106,7 +111,7 @@ namespace Backend.Infrastructure.Migrations
                     b.ToTable("Stations");
                 });
 
-            modelBuilder.Entity("Backend.Domain.Entities.Trip", b =>
+            modelBuilder.Entity("Backend.Domain.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -114,33 +119,33 @@ namespace Backend.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CoveredDistanceInMeters")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Departure")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DepartureStation")
+                    b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DepartureStationId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DurationInSeconds")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Return")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ReturnStation")
+                    b.Property<string>("Firstname")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ReturnStationId")
+                    b.Property<string>("Lastname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("PasswordHash")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("role")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Trips");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Backend.Domain.Entities.Journey", b =>
@@ -154,12 +159,17 @@ namespace Backend.Infrastructure.Migrations
                     b.HasOne("Backend.Domain.Entities.Station", "ReturnStation")
                         .WithMany("ReturnJourneys")
                         .HasForeignKey("ReturnStationId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("Backend.Domain.Entities.User", "User")
+                        .WithMany("Journeys")
+                        .HasForeignKey("UserId");
 
                     b.Navigation("DepartureStation");
 
                     b.Navigation("ReturnStation");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Backend.Domain.Entities.Station", b =>
@@ -167,6 +177,11 @@ namespace Backend.Infrastructure.Migrations
                     b.Navigation("DepartureJourneys");
 
                     b.Navigation("ReturnJourneys");
+                });
+
+            modelBuilder.Entity("Backend.Domain.Entities.User", b =>
+                {
+                    b.Navigation("Journeys");
                 });
 #pragma warning restore 612, 618
         }
