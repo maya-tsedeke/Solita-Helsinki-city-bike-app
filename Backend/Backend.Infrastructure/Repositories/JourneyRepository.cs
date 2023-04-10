@@ -1,16 +1,10 @@
 ﻿using AutoMapper;
 using Backend.Applications.Interfaces.Repositories;
-using Backend.Domain.DTOs;
 using Backend.Domain.Entities;
 using Backend.Infrastructure.Persistence;
-using CsvHelper;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using OpenQA.Selenium;
-using System;
 using System.Data;
-using System.Globalization;
-
 namespace Backend.Infrastructure.Repositories
 {
     public class JourneyRepository : IJourneyRepository
@@ -88,13 +82,13 @@ namespace Backend.Infrastructure.Repositories
                 using (var bulkCopy = new SqlBulkCopy(connection))
                 {
                     bulkCopy.DestinationTableName = "Journeys";
-            
+
                     // Set column mappings here
                     await bulkCopy.WriteToServerAsync(table);
                     return true;
                 }
             }
-        } 
+        }
         public async Task<IEnumerable<Station>> GetStations()
         {
             return await _dbContext.Stations.ToListAsync();
@@ -105,7 +99,7 @@ namespace Backend.Infrastructure.Repositories
             return await _dbContext.Stations.FindAsync(stationId);
         }
         //Get by Journey ID
-        public async Task<Journey> GetJourneyById(int journyId) 
+        public async Task<Journey> GetJourneyById(int journyId)
         {
             var journey = await _dbContext.Journeys.FindAsync(journyId);
             if (journey != null)
@@ -124,7 +118,7 @@ namespace Backend.Infrastructure.Repositories
         public async Task AddJourney(Journey journey)
         {
             _dbContext.Journeys.Add(journey);
-           
+
             try
             {
                 // Call a method that saves changes to the database
@@ -151,7 +145,7 @@ namespace Backend.Infrastructure.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-     
+
         //Single view
         public async Task<IEnumerable<Journey>> GetAllAsync()
         {
@@ -217,6 +211,6 @@ namespace Backend.Infrastructure.Repositories
                 .ToDictionaryAsync(g => g.Key, g => g.Count());
         }
 
-       
+
     }
 }

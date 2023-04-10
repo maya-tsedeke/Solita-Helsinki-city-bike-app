@@ -1,10 +1,5 @@
-﻿using AutoMapper;
-using Backend.Applications.Interfaces.Repositories;
-using Backend.Applications.Interfaces.Services;
+﻿using Backend.Applications.Interfaces.Services;
 using Backend.Domain.DTOs;
-using Backend.Domain.Entities;
-using Backend.Infrastructure.Repositories;
-using Backend.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OpenQA.Selenium;
@@ -16,12 +11,12 @@ namespace Backend.Api.Controllers
     public class JourneyListController : ControllerBase
     {
         private readonly IJourneyService _journeyService;
-     
+
 
         public JourneyListController(IJourneyService journeyService)
         {
             _journeyService = journeyService;
-          
+
         }
         [HttpGet]
         [Authorize]
@@ -36,7 +31,7 @@ namespace Backend.Api.Controllers
         {
             try
             {
-                var addedJourney = await _journeyService.AddJourney(request.DepartureStationId,request.DepartureDateTime,request.UserId);
+                var addedJourney = await _journeyService.AddJourney(request.DepartureStationId, request.DepartureDateTime, request.UserId);
 
                 var response = new JourneyDto
                 {
@@ -67,7 +62,7 @@ namespace Backend.Api.Controllers
                     },
                     ReturnStation = addedJourney.ReturnStation == null ? null : new StationDto
                     {
-               
+
                         FID = addedJourney.ReturnStation.FID,
                         ID = addedJourney.ReturnStation.ID,
                         Name = addedJourney.ReturnStation.Name,
@@ -125,7 +120,7 @@ namespace Backend.Api.Controllers
                     ReturnStationId = updatedJourney.ReturnStationId,
                     CoveredDistanceInMeters = updatedJourney.CoveredDistanceInMeters,
                     DurationInSeconds = updatedJourney.DurationInSeconds,
-                    UserId= updatedJourney.UserId,
+                    UserId = updatedJourney.UserId,
                     DepartureStation = new StationDto
                     {
                         FID = updatedJourney.DepartureStation.FID,
@@ -160,7 +155,7 @@ namespace Backend.Api.Controllers
                         Stad = updatedJourney.ReturnStation.Stad,
                         Kaupunki = updatedJourney.ReturnStation.Kaupunki
                     },
-                    users = updatedJourney.users=new UserDto
+                    users = updatedJourney.users = new UserDto
                     {
                         Id = updatedJourney.users.Id,
                         Firstname = updatedJourney.users.Firstname,
@@ -191,7 +186,7 @@ namespace Backend.Api.Controllers
             public int ReturnStationId { get; set; }
             public DateTime ReturnDateTime { get; set; }
         }
-        public class CreateJourneyDepartureDto 
+        public class CreateJourneyDepartureDto
         {
             public int DepartureStationId { get; set; }
             public DateTime DepartureDateTime { get; set; } = DateTime.Now;
@@ -210,11 +205,11 @@ namespace Backend.Api.Controllers
                     Id = journeyDetail.Id,
                     Departure = journeyDetail.Departure,
                     Return = journeyDetail.Return,
-                    DepartureStationId = journeyDetail.DepartureStationId , 
+                    DepartureStationId = journeyDetail.DepartureStationId,
                     ReturnStationId = journeyDetail.ReturnStationId,
                     CoveredDistanceInMeters = journeyDetail.CoveredDistanceInMeters,
                     DurationInSeconds = journeyDetail.DurationInSeconds,
-                    UserId= journeyDetail.UserId,
+                    UserId = journeyDetail.UserId,
 
                     DepartureStation = journeyDetail.DepartureStation != null ? new StationDto
                     {
@@ -248,8 +243,8 @@ namespace Backend.Api.Controllers
                         Stad = journeyDetail.ReturnStation.Stad,
                         Kaupunki = journeyDetail.ReturnStation.Kaupunki
                     } : null,
-                       users= journeyDetail.users != null ? new UserDto
-                      {
+                    users = journeyDetail.users != null ? new UserDto
+                    {
                         Id = journeyDetail.users.Id,
                         Firstname = journeyDetail.users.Firstname,
                         Lastname = journeyDetail.users.Lastname,
@@ -258,7 +253,7 @@ namespace Backend.Api.Controllers
                         role = journeyDetail.users.role,
                         Email = journeyDetail.users.Email,
 
-                       } : null
+                    } : null
                 };
 
                 return Ok(response);
