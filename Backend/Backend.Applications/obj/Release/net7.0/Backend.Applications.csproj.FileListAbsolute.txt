@@ -1,0 +1,15 @@
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Applications\bin\Release\net7.0\Backend.Applications.deps.json
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Applications\bin\Release\net7.0\Backend.Applications.dll
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Applications\bin\Release\net7.0\Backend.Applications.pdb
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Applications\bin\Release\net7.0\Backend.Domain.dll
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Applications\bin\Release\net7.0\Backend.Domain.pdb
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Applications\obj\Release\net7.0\Backend.Applications.csproj.AssemblyReference.cache
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Applications\obj\Release\net7.0\Backend.Applications.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Applications\obj\Release\net7.0\Backend.Applications.AssemblyInfoInputs.cache
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Applications\obj\Release\net7.0\Backend.Applications.AssemblyInfo.cs
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Applications\obj\Release\net7.0\Backend.Applications.csproj.CoreCompileInputs.cache
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Applications\obj\Release\net7.0\Backend.Applications.csproj.CopyComplete
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Applications\obj\Release\net7.0\Backend.Applications.dll
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Applications\obj\Release\net7.0\refint\Backend.Applications.dll
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Applications\obj\Release\net7.0\Backend.Applications.pdb
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Applications\obj\Release\net7.0\ref\Backend.Applications.dll

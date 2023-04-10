@@ -123,15 +123,6 @@ app.UseCors("MyPolicy");
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseDefaultFiles();
-app.UseStaticFiles();
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(Directory.GetCurrentDirectory(), @"..\Frontend\dist\frontend")),
-    RequestPath = "/dashboard"
-});
-
 app.MapControllers();
 
 app.Run();

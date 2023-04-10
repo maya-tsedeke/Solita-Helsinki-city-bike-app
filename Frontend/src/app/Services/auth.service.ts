@@ -8,7 +8,7 @@ import { tap } from 'rxjs';
 })
 export class AuthService {
 
-  private baseUrl: string = "https://localhost:44302/api/User/";
+  private baseUrl: string = "http://20.105.92.237/api/User/";
   constructor(private http: HttpClient, private router: Router) { }
   signUp(signupObj: any) {
     return this.http.post<any>(`${this.baseUrl}register`, signupObj)

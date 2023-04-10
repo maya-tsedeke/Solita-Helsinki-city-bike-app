@@ -8,7 +8,7 @@ import { Observable, map } from 'rxjs';
 })
 export class ApiService {
   [x: string]: any;
-private baseUrl:string='https://localhost:44302/api';
+private baseUrl:string='http://20.105.92.237/api';
   constructor(private http:HttpClient) { }
   getUsers(){
     return this.http.get<any>(this.baseUrl);
