@@ -1,0 +1,69 @@
+<<<<<<< HEAD
+name: Build and deploy container app to Azure Web App - Helsinki city bike app
+=======
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy container app to Azure Web App - solitawebapp
+>>>>>>> 420139017a792a582c7ac4e3a13258ed9f4d545b
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: 'ubuntu-latest'
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Log in to registry
+      uses: docker/login-action@v1
+      with:
+        registry: https://dotnetimage.azurecr.io/
+<<<<<<< HEAD
+        username: ${{ secrets.ACR_USERNAME }}
+        password: ${{ secrets.ACR_PASSWORD }}
+=======
+        username: ${{ secrets.AzureAppService_ContainerUsername_2bed9e3c3449435dbc3ab1e6b21fc7ba }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_4be90f3812084259a37b148037197785 }}
+>>>>>>> 420139017a792a582c7ac4e3a13258ed9f4d545b
+
+    - name: Build and push container image to registry
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+<<<<<<< HEAD
+        tags: dotnetimage.azurecr.io/${{ secrets.ACR_PASSWORD }}/finalndbikeoperation:${{ github.sha }}
+=======
+        tags: dotnetimage.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_2bed9e3c3449435dbc3ab1e6b21fc7ba }}/finalndbikeoperation:${{ github.sha }}
+>>>>>>> 420139017a792a582c7ac4e3a13258ed9f4d545b
+        file: ./Dockerfile
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+    - name: Deploy to Azure Web App
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'solitawebapp'
+        slot-name: 'production'
+<<<<<<< HEAD
+        publish-profile: ${{ AZURE_PUBLISH_PROFILE }}
+        images: 'dotnetimage.azurecr.io/${{ secrets.ACR_USERNAME }}/finalndbikeoperation:${{ github.sha }}'
+=======
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_54efb5785b3041d390a1783b846322c2 }}
+        images: 'dotnetimage.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_2bed9e3c3449435dbc3ab1e6b21fc7ba }}/finalndbikeoperation:${{ github.sha }}'
+>>>>>>> 420139017a792a582c7ac4e3a13258ed9f4d545b
