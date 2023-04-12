@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
+<<<<<<< HEAD
         uses: actions/checkout@v2
       - name: Build and push Docker image
         run: |
@@ -34,3 +35,16 @@ jobs:
           ACR_REGISTRY: ${{ secrets.ACR_REGISTRY }}
           ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
           ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
+=======
+        uses: actions/checkout@v2.5.2
+      - name: Build and push Docker image
+        env:
+          ACR_REGISTRY: ${{ secrets.ACR_REGISTRY }}
+          ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
+          ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
+        run: |
+          docker build -t finalndbikeoperation .
+          docker tag finalndbikeoperation ${{ env.ACR_REGISTRY }}/finalndbikeoperation:latest
+          echo ${{ env.ACR_PASSWORD }} | docker login -u ${{ env.ACR_USERNAME }} --password-stdin ${{ env.ACR_REGISTRY }}
+          docker push ${{ env.ACR_REGISTRY }}/finalndbikeoperation:latest
+>>>>>>> 4b3301d0ec46b78e69597ec53faa658698d61a08
