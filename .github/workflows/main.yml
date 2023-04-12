@@ -11,11 +11,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Build and push Docker image
-        uses: ./build-and-push.yml
-        with:
-          ACR_REGISTRY: ${{ secrets.ACR_REGISTRY }}
-          ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
-          ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
+        run: ./build-and-push.sh ${{ secrets.ACR_REGISTRY }} ${{ secrets.ACR_USERNAME }} ${{ secrets.ACR_PASSWORD }}
+        env:
+          DOCKER_BUILDKIT: 1
   deploy-to-container-instance:
     runs-on: ubuntu-latest
     needs: build-and-push
@@ -27,9 +25,11 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
       - name: Deploy to Azure Container Instance
-        uses: ./deploy-to-container-instance.yml
+        uses: azure/container-instances@v1
         with:
-          RESOURCE_GROUP: hsl_solita
-          CONTAINER_GROUP_NAME: solita
-          IMAGE_NAME: finalndbikeoperation
-          IMAGE_TAG: latest
+          resource-group: ${{ secrets.RESOURCE_GROUP }}
+          name: ${{ secrets.CONTAINER_GROUP_NAME }}
+          image: ${{ secrets.ACR_REGISTRY }}/finalndbikeoperation:latest
+          cpu: 1
+          memory: 1.5
+          command: ["echo", "Hello, dotnet!"]
