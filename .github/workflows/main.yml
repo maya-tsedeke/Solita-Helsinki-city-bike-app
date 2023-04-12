@@ -42,4 +42,4 @@ jobs:
           image: ${{ secrets.ACR_REGISTRY }}/finalndbikeoperation:latest
           cpu: 1
           memory: 1.5
-          command: ["echo", "Hello, dotnet!"]
+          command: "'echo', 'Hello, dotnet!'"
