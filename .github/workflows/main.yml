@@ -47,4 +47,8 @@ jobs:
           docker build -t finalndbikeoperation .
           docker tag finalndbikeoperation ${{ secrets.ACR_REGISTRY }}/finalndbikeoperation:latest
           docker push ${{ secrets.ACR_REGISTRY }}/finalndbikeoperation:latest
+      - name: Verify container instance image
+        run: |
+          curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+          az container show --name dotnetimage --resource-group hsl_solita --query "{image:containers[0].image}"
 
