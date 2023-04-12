@@ -7,17 +7,13 @@ on:
 
 env:
   DOCKER_BUILDKIT: 1
-  AZURE_RG: hsl_solita
-  AZURE_SUBSCRIPTION: df9d8a7b-fe7f-4206-a937-98263c660cb3
+  AZURE_RG: <your-resource-group-name>
+  AZURE_SUBSCRIPTION: <your-subscription-id>
 
 jobs:
   create-service-principal:
     runs-on: ubuntu-latest
     steps:
-      - name: Login to Azure
-        #uses: azure/login@v1
-        #with:
-         # creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: Create Service Principal
         run: |
           az ad sp create-for-rbac --name AcrPush --role owner --scopes /subscriptions/${{ env.AZURE_SUBSCRIPTION }}/resourceGroups/${{ env.AZURE_RG }} --sdk-auth > sp.json
