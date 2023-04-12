@@ -7,8 +7,8 @@ on:
 
 env:
   DOCKER_BUILDKIT: 1
-  AZURE_RG: <your-resource-group-name>
-  AZURE_SUBSCRIPTION: <your-subscription-id>
+  AZURE_RG: hsl_solita
+  AZURE_SUBSCRIPTION: df9d8a7b-fe7f-4206-a937-98263c660cb3
 
 jobs:
   create-service-principal:
@@ -27,8 +27,6 @@ jobs:
           inlineScript: |
             SP_JSON=$(cat sp.json)
             echo "::set-secret name=AZURE_CREDENTIALS::${SP_JSON}"
-      - name: Checkout code
-        uses: actions/checkout@v2
       - name: Build and push Docker image
         env:
           ACR_REGISTRY: ${{ secrets.ACR_REGISTRY }}
