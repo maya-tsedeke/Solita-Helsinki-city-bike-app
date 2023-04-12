@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 name: Build and deploy container app to Azure Web App - Helsinki city bike app
+=======
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy container app to Azure Web App - solitawebapp
+>>>>>>> 420139017a792a582c7ac4e3a13258ed9f4d545b
 
 on:
   push:
@@ -44,5 +51,9 @@ jobs:
       with:
         app-name: 'solitawebapp'
         slot-name: 'production'
+
         publish-profile: ${{ AZURE_PUBLISH_PROFILE }}
         images: 'dotnetimage.azurecr.io/${{ secrets.ACR_USERNAME }}/finalndbikeoperation:${{ github.sha }}'
+
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_54efb5785b3041d390a1783b846322c2 }}
+        images: 'dotnetimage.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_2bed9e3c3449435dbc3ab1e6b21fc7ba }}/finalndbikeoperation:${{ github.sha }}'
