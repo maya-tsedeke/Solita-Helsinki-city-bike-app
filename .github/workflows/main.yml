@@ -14,7 +14,7 @@ jobs:
         run: ./build-and-push.sh ${{ secrets.ACR_REGISTRY }} ${{ secrets.ACR_USERNAME }} ${{ secrets.ACR_PASSWORD }}
         env:
           DOCKER_BUILDKIT: 1
-deploy-to-container-instance:
+  deploy-to-container-instance:
     runs-on: ubuntu-latest
     needs: build-and-push
     steps:
