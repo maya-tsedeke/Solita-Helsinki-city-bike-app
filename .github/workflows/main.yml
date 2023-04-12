@@ -35,7 +35,7 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
       - name: Deploy to Azure Container Instance
-        uses: azure/container-instances@v1
+        uses: Azure/aci-deploy@v1
         with:
           resource-group: ${{ secrets.RESOURCE_GROUP }}
           name: ${{ secrets.CONTAINER_GROUP_NAME }}
