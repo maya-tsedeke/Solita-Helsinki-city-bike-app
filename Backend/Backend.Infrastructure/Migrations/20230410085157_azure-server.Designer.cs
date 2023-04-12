@@ -13,7 +13,7 @@ namespace Backend.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbcontext))]
     [Migration("20230410085157_azure-server")]
-    partial class azureserver
+    partial class Azureserver
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

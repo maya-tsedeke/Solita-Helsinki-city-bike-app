@@ -1,21 +1,17 @@
-using Backend.Applications.Mapping;
-using Backend.Infrastructure.Repositories;
-using Backend.Applications.Interfaces.Services;
-using Backend.Infrastructure.Services;
-using Backend.Infrastructure.Persistence;
-using Microsoft.EntityFrameworkCore;
 using Backend.Applications.Interfaces.Repositories;
+using Backend.Applications.Interfaces.Services;
 using Backend.Applications.Interfaces.Services.users;
+using Backend.Applications.Mapping;
 using Backend.Domain.Entities;
+using Backend.Infrastructure.Persistence;
+using Backend.Infrastructure.Repositories;
+using Backend.Infrastructure.Services;
 using Backend.Infrastructure.Services.users;
-using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Microsoft.Extensions.FileProviders;
-using FluentAssertions.Common;
-using System;
-using Azure.Identity;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -54,7 +50,18 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Todo Api", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "Fullstack developer",
+        Description = "API description",
+        Contact = new OpenApiContact
+        {
+            Name = "Tsedeke Temesgen",
+            Email = "infosignal2@gmail.com"
+        }
+    });
+
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -63,6 +70,7 @@ builder.Services.AddSwaggerGen(c =>
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
         Description = "JWT Authorization header using the Bearer scheme."
+
     });
 
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -112,17 +120,51 @@ builder.Services.AddAutoMapper(config =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+
+//}
+app.UseRouting();
 
 app.UseHttpsRedirection();
 app.UseCors("MyPolicy");
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller}/{action=Index}/{id?}");
+
+app.Use(async (context, next) =>
+{
+    await next();
+    if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value))
+    {
+        context.Request.Path = "/index.html";
+        await next();
+    }
+});
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    ServeUnknownFileTypes = true,
+    DefaultContentType = "text/plain"
+});
+
+app.UseFileServer(enableDirectoryBrowsing: false);
+// Add Swagger
+
+
+// Enable Swagger UI
+app.UseSwagger();
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "FI-Bike station, Backend");
+    options.SwaggerEndpoint("dotnetimage.azurecr.io/", "FI-Bike station, Frontend");
+});
 app.Run();

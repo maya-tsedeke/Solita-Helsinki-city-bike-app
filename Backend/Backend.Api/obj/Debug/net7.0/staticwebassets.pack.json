@@ -1,0 +1,77 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\3rdpartylicenses.txt",
+      "PackagePath": "staticwebassets\\3rdpartylicenses.txt"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\assets\\css\\common.scss",
+      "PackagePath": "staticwebassets\\assets\\css\\common.scss"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\assets\\map-marker-icon@2x.png",
+      "PackagePath": "staticwebassets\\assets\\map-marker-icon@2x.png"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\main.186715b8d905d339.js",
+      "PackagePath": "staticwebassets\\main.186715b8d905d339.js"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\main.34967682f7eb8f8a.js",
+      "PackagePath": "staticwebassets\\main.34967682f7eb8f8a.js"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\main.4fceab94f6c1b918.js",
+      "PackagePath": "staticwebassets\\main.4fceab94f6c1b918.js"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\main.8f8a6dd931adb7fe.js",
+      "PackagePath": "staticwebassets\\main.8f8a6dd931adb7fe.js"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\main.99b4c84ba3a0fe86.js",
+      "PackagePath": "staticwebassets\\main.99b4c84ba3a0fe86.js"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\main.da17958115917082.js",
+      "PackagePath": "staticwebassets\\main.da17958115917082.js"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\polyfills.0ae7ecd3edb81717.js",
+      "PackagePath": "staticwebassets\\polyfills.0ae7ecd3edb81717.js"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\runtime.b52cd812db2fe880.js",
+      "PackagePath": "staticwebassets\\runtime.b52cd812db2fe880.js"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\styles.666e1004b79dd49c.css",
+      "PackagePath": "staticwebassets\\styles.666e1004b79dd49c.css"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.Backend.Api.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.Backend.Api.props",
+      "PackagePath": "build\\Backend.Api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.Backend.Api.props",
+      "PackagePath": "buildMultiTargeting\\Backend.Api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.Backend.Api.props",
+      "PackagePath": "buildTransitive\\Backend.Api.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

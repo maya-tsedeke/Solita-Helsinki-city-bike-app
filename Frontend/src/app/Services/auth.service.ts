@@ -7,14 +7,24 @@ import { tap } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+ 
 
-  private baseUrl: string = "http://20.105.92.237/api/User/";
-  constructor(private http: HttpClient, private router: Router) { }
+     
+
+  private baseUrl: string ;
+  constructor(private http: HttpClient, private router: Router) {
+     // Get the current host and protocol
+    const protocol = window.location.protocol;
+    const host = window.location.hostname;
+    const port = window.location.port;
+    // Use the current host and protocol to construct the base URL
+    this.baseUrl=`${protocol}//${host}:${port}/api/User`;
+   }
   signUp(signupObj: any) {
-    return this.http.post<any>(`${this.baseUrl}register`, signupObj)
+    return this.http.post<any>(`${this.baseUrl}/register`, signupObj)
   }
   login(loginObj: any) {
-    return this.http.post<any>(`${this.baseUrl}authenticate`, loginObj)
+    return this.http.post<any>(`${this.baseUrl}/authenticate`, loginObj)
       .pipe(
         tap((res) => {
           this.storeToken(res.token);

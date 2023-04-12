@@ -89,31 +89,12 @@ export class JourneysComponent implements OnInit {
           },
           error: (error) => {
             console.log('Error: ', error);
-            if (error.status === 400) {
-              let errorDetail = '';
-              if (error.error && error.error.errors) {
-                if (typeof error.error.errors === 'object') {
-                  Object.keys(error.error.errors).forEach((key) => {
-                    errorDetail += `${key}: ${error.error.errors[key]}<br>`;
-                  });
-                } else {
-                  errorDetail = 'Validation error';
-                }
-              } else {
-                errorDetail = 'Validation error';
-              }
+           
               this.toast.error({
-                detail: errorDetail,
-                summary: 'Validation Error',
-                duration: 5000,
-              });
-            } else {
-              this.toast.error({
-                detail: 'Error occurred while returning journey. Please try again later.',
+                detail: error,
                 summary: 'Error',
                 duration: 5000,
               });
-            }
           }
         });
       }
@@ -165,19 +146,19 @@ export class JourneysComponent implements OnInit {
                   errorDetail += `${key}: ${error.error.errors[key]}<br>`;
                 });
               } else {
-                errorDetail = 'Validation error';
+                errorDetail = error;
               }
             } else {
-              errorDetail = 'Validation error';
+              errorDetail = error;
             }
             this.toast.error({
               detail: errorDetail,
-              summary: 'Validation Error',
+              summary: error,
               duration: 5000,
             });
           } else {
             this.toast.error({
-              detail: 'Something went wrong',
+              detail: error,
               summary: 'Error',
               duration: 5000,
             });

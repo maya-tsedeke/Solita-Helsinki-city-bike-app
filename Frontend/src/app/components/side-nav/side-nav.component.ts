@@ -12,8 +12,9 @@ export class SideNavComponent implements OnInit {
 
   list = [
     { number: '5', name: 'login', icon: 'fas fa-sign-in-alt', routerLink: '/login' },
-    { number: '6', name: 'signup', icon: 'fas fa-user-plus', routerLink: '/signup' }];
-
+    { number: '6', name: 'signup', icon: 'fas fa-user-plus', routerLink: '/signup' },
+    ];
+    
   loggedInList = [
     { number: '1', name: 'home', icon: 'fas fa-tachometer-alt', routerLink: '/dashboard' }, 
       { number: '3', name: 'Import', icon: 'fa fa-upload', routerLink: '/import' }, 

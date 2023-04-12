@@ -24,6 +24,7 @@
     "@ng-bootstrap/ng-bootstrap": "^14.1.0",
     "@ng-select/ng-select": "^10.0.4",
     "angular-bootstrap-md": "^15.0.0",
+    "latest-version": "^7.0.0",
     "ng-angular-popup": "^0.2.0",
     "ng-cdbangular": "^1.2.1",
     "ngx-pagination": "^6.0.3",

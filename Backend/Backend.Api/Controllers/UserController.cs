@@ -4,7 +4,6 @@ using Backend.Domain.AppException;
 using Backend.Domain.DTOs;
 using Backend.Domain.Response;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Api.Controllers
@@ -38,9 +37,9 @@ namespace Backend.Api.Controllers
                 var loginResponse = new AuthResponse(userDto.Id, userDto.Username, token);
                 return Ok(loginResponse);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-             
+
                 throw; // Rethrow the exception so it can be caught by the calling method
             }
         }
@@ -74,9 +73,9 @@ namespace Backend.Api.Controllers
             catch (AppException ex)
             {
                 return BadRequest(new { message = ex.Message });
-              
+
             }
-         }
+        }
 
         [Authorize]
         [HttpDelete("{id}")]
@@ -92,7 +91,7 @@ namespace Backend.Api.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
-        
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {

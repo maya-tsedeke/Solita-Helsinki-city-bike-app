@@ -106,3 +106,5 @@ C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.A
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\obj\Debug\net7.0\Backend.Api.pdb
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\obj\Debug\net7.0\Backend.Api.genruntimeconfig.cache
 C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\obj\Debug\net7.0\ref\Backend.Api.dll
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\bin\Debug\net7.0\Microsoft.AspNetCore.SpaServices.Extensions.dll
+C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Api\bin\Debug\net7.0\Backend.Api.staticwebassets.runtime.json
