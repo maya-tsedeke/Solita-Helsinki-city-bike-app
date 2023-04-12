@@ -1,22 +1,36 @@
 name: Build and push Docker image
 
+on:
+  push:
+    branches:
+      - main
+
 env:
   DOCKER_BUILDKIT: 1
 
-inputs:
-  ACR_REGISTRY:
-    required: true
-  ACR_USERNAME:
-    required: true
-  ACR_PASSWORD:
-    required: true
-
-steps:
-  - name: Build Docker image
-    run: |
-      docker build -t finalndbikeoperation .
-      docker tag finalndbikeoperation ${{ inputs.ACR_REGISTRY }}/finalndbikeoperation:latest
-  - name: Push Docker image to ACR
-    run: |
-      echo ${{ inputs.ACR_PASSWORD }} | docker login -u ${{ inputs.ACR_USERNAME }} --password-stdin ${{ inputs.ACR_REGISTRY }}
-      docker push ${{ inputs.ACR_REGISTRY }}/finalndbikeoperation:latest
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build and push Docker image
+        run: |
+          docker build -t finalndbikeoperation .
+          docker tag finalndbikeoperation ${{ inputs.ACR_REGISTRY }}/finalndbikeoperation:latest
+        env:
+          DOCKER_BUILDKIT: 1
+        with:
+          ACR_REGISTRY: ${{ secrets.ACR_REGISTRY }}
+          ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
+          ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
+      - name: Push Docker image to ACR
+        run: |
+          echo ${{ inputs.ACR_PASSWORD }} | docker login -u ${{ inputs.ACR_USERNAME }} --password-stdin ${{ inputs.ACR_REGISTRY }}
+          docker push ${{ inputs.ACR_REGISTRY }}/finalndbikeoperation:latest
+        env:
+          DOCKER_BUILDKIT: 1
+        with:
+          ACR_REGISTRY: ${{ secrets.ACR_REGISTRY }}
+          ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
+          ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
