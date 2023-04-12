@@ -165,6 +165,6 @@ app.UseSwagger();
 app.UseSwaggerUI(options =>
 {
     options.SwaggerEndpoint("/swagger/v1/swagger.json", "FI-Bike station, Backend");
-    options.SwaggerEndpoint("dotnetimage.azurecr.io/", "FI-Bike station, Frontend");
+    options.SwaggerEndpoint("20.105.92.237/", "FI-Bike station, Frontend");
 });
 app.Run();

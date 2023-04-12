@@ -1,0 +1,22 @@
+name: Deploy to Azure Container Instance
+
+inputs:
+  RESOURCE_GROUP:
+    required: true
+  CONTAINER_GROUP_NAME:
+    required: true
+  IMAGE_NAME:
+    required: true
+  IMAGE_TAG:
+    required: true
+
+steps:
+  - name: Deploy container instance
+    uses: azure/container-instances@v1
+    with:
+      resource-group: ${{ inputs.RESOURCE_GROUP }}
+      name: ${{ inputs.CONTAINER_GROUP_NAME }}
+      image: ${{ inputs.IMAGE_NAME }}:${{ inputs.IMAGE_TAG }}
+      cpu: 1
+      memory: 1.5
+      command: ["echo", "Hello, world!"]

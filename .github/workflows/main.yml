@@ -1,55 +1,35 @@
-name: Publish 
+name: CI/CD pipeline
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
-env: 
-  AZURE_WEBAPP_NAME: csharp-dotnet7-test
-  AZURE_WEBAPP_PACKAGE_PATH: "./publish"
+
 jobs:
-  publish:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '7.0.x'
-      - name: Restore
-        run: dotnet restore Solita-Helsinki-city-bike-app.sln
-      - name: Build
-        run: dotnet build Solita-Helsinki-city-bike-app.sln --configuration Release --no-restore
-      - name: Publish
-        run: dotnet publish Solita-Helsinki-city-bike-app.sln --configuration Release --no-build --output '${{env.AZURE_WEBAPP_PACKAGE_PATH}}'
-      - name: Azure WebApp
-        uses: azure/webapps-deploy@v2
-        with: 
-          app-name: "${{env.AZURE_WEBAPP_NAME}}"
-          publish-profile: ${{secrets.AZURE_PUBLISH_PROFILE}}
-          package: "${{env.AZURE_WEBAPP_PACKAGE_PATH}}"
-  build-and-push-image:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Print current directory
-        run: pwd
+      - name: Build and push Docker image
+        uses: ./build-and-push.yml
+        with:
+          ACR_REGISTRY: ${{ secrets.ACR_REGISTRY }}
+          ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
+          ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
+  deploy-to-container-instance:
+    runs-on: ubuntu-latest
+    needs: build-and-push
+    steps:
       - name: Login to ACR
         uses: azure/docker-login@v1
         with:
           login-server: ${{ secrets.ACR_REGISTRY }}
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
-
-      - name: Build and push Docker image
-        run: |
-          docker build -t finalndbikeoperation .
-          docker tag finalndbikeoperation ${{ secrets.ACR_REGISTRY }}/finalndbikeoperation:latest
-          docker push ${{ secrets.ACR_REGISTRY }}/finalndbikeoperation:latest
-      - name: Verify container instance image
-        run: |
-          docker login ${{ secrets.ACR_REGISTRY }}.azurecr.io -u ${{ secrets.ACR_USERNAME }} -p ${{ secrets.ACR_PASSWORD }}
-          curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-          az container show --name dotnetimage --resource-group hsl_solita --query "{image:containers[0].image}"
-
+      - name: Deploy to Azure Container Instance
+        uses: ./deploy-to-container-instance.yml
+        with:
+          RESOURCE_GROUP: hsl_solita
+          CONTAINER_GROUP_NAME: solita
+          IMAGE_NAME: finalndbikeoperation
+          IMAGE_TAG: latest
