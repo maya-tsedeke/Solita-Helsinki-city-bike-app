@@ -7,19 +7,21 @@ import { tap } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
- 
 
-     
 
-  private baseUrl: string ;
+
+
+  private baseUrl: string;
   constructor(private http: HttpClient, private router: Router) {
-     // Get the current host and protocol
-    const protocol = window.location.protocol;
-    const host = window.location.hostname;
-    const port = window.location.port;
-    // Use the current host and protocol to construct the base URL
-    this.baseUrl=`${protocol}//${host}:${port}/api/User`;
-   }
+    // Get the current host and protocol
+    // Get the current host and protocol
+    //const protocol = window.location.protocol;
+    //const host = window.location.hostname;
+    //const port = window.location.port;
+    //Use the current host and protocol to construct the base URL
+    //this.baseUrl=`${protocol}//${host}:${port}/api/User`;
+    this.baseUrl = "https://solitawebapp.azurewebsites.net/api/User";
+  }
   signUp(signupObj: any) {
     return this.http.post<any>(`${this.baseUrl}/register`, signupObj)
   }

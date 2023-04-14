@@ -1,0 +1,13 @@
+global using AutoMapper;
+global using Backend.Api.Controllers;
+global using Backend.Applications.Interfaces.Repositories;
+global using Backend.Applications.Interfaces.Services;
+global using Backend.Domain.DTOs;
+global using Backend.Domain.Entities;
+global using Backend.Infrastructure.Services;
+global using FluentValidation;
+global using FluentValidation.Results;
+global using Microsoft.AspNetCore.Mvc;
+global using Moq;
+global using Newtonsoft.Json;
+global using NUnit.Framework;

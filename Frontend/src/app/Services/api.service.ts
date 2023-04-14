@@ -11,11 +11,12 @@ export class ApiService {
 private baseUrl:string;
   constructor(private http:HttpClient) {
        // Get the current host and protocol
-       const protocol = window.location.protocol;
-       const host = window.location.hostname;
-       const port = window.location.port;
+       //const protocol = window.location.protocol;
+       //const host = window.location.hostname;
+       //const port = window.location.port;
        // Use the current host and protocol to construct the base URL
-       this.baseUrl=`${protocol}//${host}:${port}/api/`;
+       //this.baseUrl=`${protocol}//${host}:${port}/api/`;
+       this.baseUrl="https://solitawebapp.azurewebsites.net/api";
    }
   getUsers(){
     return this.http.get<any>(this.baseUrl);

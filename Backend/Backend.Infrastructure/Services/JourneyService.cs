@@ -4,30 +4,27 @@ using Backend.Applications.Interfaces.Repositories;
 using Backend.Applications.Interfaces.Services;
 using Backend.Domain.DTOs;
 using Backend.Domain.Entities;
-using Backend.Domain.Validation;
 using CsvHelper;
-using CsvHelper.Configuration;
-using CsvHelper.TypeConversion;
 using OpenQA.Selenium;
 using System.Data;
 using System.Globalization;
 
 namespace Backend.Infrastructure.Services
 {
-    public class JourneyService : IJourneyService  
+    public class JourneyService : IJourneyService
     {
         private readonly IJourneyRepository _journeyRepository;
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
         private readonly IStationRepository _stationRepository;
-        public JourneyService(IJourneyRepository journeyRepository, IMapper mapper, IStationRepository stationRepository,IUserRepository userRepository)
+        public JourneyService(IJourneyRepository journeyRepository, IMapper mapper, IStationRepository stationRepository, IUserRepository userRepository)
         {
             _journeyRepository = journeyRepository;
             _mapper = mapper;
             _stationRepository = stationRepository;
             _userRepository = userRepository;
         }
-        
+
         public async Task<int> ImportJourneysFromCsv(string filePath)
         {
 
@@ -39,7 +36,7 @@ namespace Backend.Infrastructure.Services
                 {
 
                     var records = csv.GetRecords<CSVDto>();
-                    
+
                     foreach (var record in records)
                     {
 
@@ -94,7 +91,7 @@ namespace Backend.Infrastructure.Services
                 throw new NotFoundException($"Journey with UserID {journeyId} not found.");
             }
 
-            var departureStation = await _journeyRepository.GetStation(journey.DepartureStationId);
+            var departureStation = await _journeyRepository.GetStation(journey.DepartureStationId ?? 0);
             StationDto departureStationDto = null;
             if (departureStation != null)
             {
@@ -125,7 +122,7 @@ namespace Backend.Infrastructure.Services
                 DurationInSeconds = journey.DurationInSeconds,
                 DepartureStation = departureStationDto,
                 ReturnStation = returnStationDto,
-                users= userDto,
+                users = userDto,
             };
 
             return response;
@@ -142,7 +139,7 @@ namespace Backend.Infrastructure.Services
             var journeyDtos = new List<JourneyDto>();
             foreach (var journey in journeys)
             {
-                var departureStation = await _journeyRepository.GetStation(journey.DepartureStationId);
+                var departureStation = await _journeyRepository.GetStation(journey.DepartureStationId ?? 0);
                 StationDto departureStationDto = null;
                 if (departureStation != null)
                 {
@@ -255,7 +252,7 @@ namespace Backend.Infrastructure.Services
             journey.DepartureStation = departureStation;
             journey.ReturnStationId = null;
             journey.Return = DateTime.MinValue;
-            journey.users = user; 
+            journey.users = user;
             await _journeyRepository.AddJourney(journey);
 
             return _mapper.Map<JourneyDto>(journey);
@@ -275,22 +272,25 @@ namespace Backend.Infrastructure.Services
                 throw new NotFoundException($"Journey with ID {journeyId} not found.");
             }
 
-            var departureStation = await _journeyRepository.GetStation(journey.DepartureStationId); ;
+            var departureStation = await _journeyRepository.GetStation(journey.DepartureStationId ?? 0); ;
             if (departureStation == null)
             {
                 throw new NotFoundException($"Departure station with ID {journey.DepartureStationId} not found.");
             }
 
             var distance = CalculateDistance(departureStation.y, departureStation.x, returnStation.y, returnStation.x);
-            var duration = CalculateDurationInSeconds(journey.Departure, returnDateTime);
+            if (journey.Departure.HasValue)
+            {
+                var duration = CalculateDurationInSeconds(journey.Departure.Value, returnDateTime);
+                journey.DurationInSeconds = duration;
+            }
 
             journey.ReturnStationId = returnStationId;
             journey.Return = returnDateTime;
-            journey.CoveredDistanceInMeters =distance;
-            journey.DurationInSeconds = duration;
-         
+            journey.CoveredDistanceInMeters = distance;
+
             await _journeyRepository.UpdateJourney(journey);
-        
+
             return _mapper.Map<JourneyDto>(journey);
         }
 

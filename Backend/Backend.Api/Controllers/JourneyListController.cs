@@ -1,5 +1,6 @@
 ﻿using Backend.Applications.Interfaces.Services;
 using Backend.Domain.DTOs;
+using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OpenQA.Selenium;
@@ -12,11 +13,11 @@ namespace Backend.Api.Controllers
     {
         private readonly IJourneyService _journeyService;
 
-
-        public JourneyListController(IJourneyService journeyService)
+        private readonly IValidator<StationDto> _validator;
+        public JourneyListController(IJourneyService journeyService, IValidator<StationDto> validator = null)
         {
             _journeyService = journeyService;
-
+            _validator = validator;
         }
         [HttpGet]
         [Authorize]
@@ -30,7 +31,8 @@ namespace Backend.Api.Controllers
         public async Task<IActionResult> AddJourney([FromBody] CreateJourneyDepartureDto request)
         {
             try
-            {
+            {    // Validate the stationDto object if the _validator is not null
+
                 var addedJourney = await _journeyService.AddJourney(request.DepartureStationId, request.DepartureDateTime, request.UserId);
 
                 var response = new JourneyDto
@@ -93,14 +95,9 @@ namespace Backend.Api.Controllers
 
                 return Ok(response);
             }
-            catch (NotFoundException ex)
-            {
-                return BadRequest(ex.Message);
-            }
             catch (Exception ex)
             {
-                // Handle error
-                return StatusCode(500, ex.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
         [HttpPut("{journeyId:int}/return")]
@@ -121,7 +118,7 @@ namespace Backend.Api.Controllers
                     CoveredDistanceInMeters = updatedJourney.CoveredDistanceInMeters,
                     DurationInSeconds = updatedJourney.DurationInSeconds,
                     UserId = updatedJourney.UserId,
-                    DepartureStation = new StationDto
+                    DepartureStation = updatedJourney.DepartureStation == null ? null : new StationDto
                     {
                         FID = updatedJourney.DepartureStation.FID,
                         ID = updatedJourney.DepartureStation.ID,
@@ -138,7 +135,7 @@ namespace Backend.Api.Controllers
                         Stad = updatedJourney.DepartureStation.Stad,
                         Kaupunki = updatedJourney.DepartureStation.Kaupunki
                     },
-                    ReturnStation = new StationDto
+                    ReturnStation = updatedJourney.ReturnStation == null ? null : new StationDto
                     {
                         FID = updatedJourney.ReturnStation.FID,
                         ID = updatedJourney.ReturnStation.ID,
@@ -155,7 +152,7 @@ namespace Backend.Api.Controllers
                         Stad = updatedJourney.ReturnStation.Stad,
                         Kaupunki = updatedJourney.ReturnStation.Kaupunki
                     },
-                    users = updatedJourney.users = new UserDto
+                    users = updatedJourney.users == null ? null : new UserDto
                     {
                         Id = updatedJourney.users.Id,
                         Firstname = updatedJourney.users.Firstname,
@@ -170,15 +167,11 @@ namespace Backend.Api.Controllers
 
                 return Ok(response);
             }
-            catch (NotFoundException ex)
-            {
-                return BadRequest(ex.Message);
-            }
             catch (Exception ex)
             {
-                // Handle error
-                return StatusCode(500, ex.Message);
+                return BadRequest(new { message = ex.Message });
             }
+
         }
 
         public class UpdateJourneyReturnDto
@@ -198,7 +191,18 @@ namespace Backend.Api.Controllers
         {
             try
             {
-                var journeyDetail = await _journeyService.GetJourneys(journId);
+                var journeyDetail = await _journeyService.GetJourneys(journId);    // Validate the stationDto object if the _validator is not null
+                if (_validator != null)
+                {
+                    var validationResult = await _validator.ValidateAsync((IValidationContext)journeyDetail);
+                    if (!validationResult.IsValid)
+                    {
+                        var validationErrors = validationResult.Errors.Select(error => $"{error.PropertyName}: {error.ErrorMessage}");
+                        var errorMessage = string.Join("\n", validationErrors);
+                        return BadRequest(new { message = errorMessage });
+                    }
+                }
+
 
                 var response = new JourneyDto
                 {
@@ -260,7 +264,7 @@ namespace Backend.Api.Controllers
             }
             catch (NotFoundException ex)
             {
-                return NotFound(ex.Message);
+                return NotFound(new { message = ex.Message });
             }
             catch (Exception ex)
             {

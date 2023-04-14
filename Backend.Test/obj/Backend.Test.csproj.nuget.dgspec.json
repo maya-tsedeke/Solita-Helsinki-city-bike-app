@@ -1,0 +1,520 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend.Test\\Backend.Test.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend.Test\\Backend.Test.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend.Test\\Backend.Test.csproj",
+        "projectName": "Backend.Test",
+        "projectPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend.Test\\Backend.Test.csproj",
+        "packagesPath": "C:\\Users\\tshabe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend.Test\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\tshabe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\Backend.Api.csproj": {
+                "projectPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\Backend.Api.csproj"
+              },
+              "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Applications\\Backend.Applications.csproj": {
+                "projectPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Applications\\Backend.Applications.csproj"
+              },
+              "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Domain\\Backend.Domain.csproj": {
+                "projectPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Domain\\Backend.Domain.csproj"
+              },
+              "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Testing": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.3.2, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.18.4, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            },
+            "NUnit.Analyzers": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.2.1, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\Backend.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\Backend.Api.csproj",
+        "projectName": "Backend.Api",
+        "projectPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\Backend.Api.csproj",
+        "packagesPath": "C:\\Users\\tshabe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\tshabe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Applications\\Backend.Applications.csproj": {
+                "projectPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Applications\\Backend.Applications.csproj"
+              },
+              "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "Azure.Extensions.AspNetCore.Configuration.Secrets": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "Azure.Identity": {
+              "target": "Package",
+              "version": "[1.6.0, )"
+            },
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[30.0.1, )"
+            },
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[6.10.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Testing": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Versioning": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.AspNetCore.SpaServices.Extensions": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.27.0, )"
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.17.0, )"
+            },
+            "Selenium.WebDriver": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Applications\\Backend.Applications.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Applications\\Backend.Applications.csproj",
+        "projectName": "Backend.Applications",
+        "projectPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Applications\\Backend.Applications.csproj",
+        "packagesPath": "C:\\Users\\tshabe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Applications\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\tshabe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Domain\\Backend.Domain.csproj": {
+                "projectPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Domain\\Backend.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Domain\\Backend.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Domain\\Backend.Domain.csproj",
+        "projectName": "Backend.Domain",
+        "projectPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Domain\\Backend.Domain.csproj",
+        "packagesPath": "C:\\Users\\tshabe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\tshabe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[30.0.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.5.1, )"
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj",
+        "projectName": "Backend.Infrastructure",
+        "projectPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\tshabe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\tshabe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Applications\\Backend.Applications.csproj": {
+                "projectPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Applications\\Backend.Applications.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[30.0.1, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Selenium.WebDriver": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

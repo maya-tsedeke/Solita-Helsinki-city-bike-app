@@ -1,12 +1,8 @@
-﻿using AutoMapper;
-using Backend.Applications.Interfaces.Repositories;
-using Backend.Applications.Interfaces.Services;
+﻿using Backend.Applications.Interfaces.Services;
 using Backend.Domain.DTOs;
-using Backend.Domain.Entities;
+using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using static System.Collections.Specialized.BitVector32;
 
 namespace Backend.Api.Controllers
 {
@@ -15,10 +11,11 @@ namespace Backend.Api.Controllers
     public class StationController : ControllerBase
     {
         private readonly IStationService _stationService;
-
-        public StationController(IStationService stationService)
+        private readonly IValidator<StationDto> _validator;
+        public StationController(IStationService stationService, IValidator<StationDto> validator = null)
         {
             _stationService = stationService;
+            _validator = validator;
         }
         [HttpPost("Create")]
         [Authorize]
@@ -26,6 +23,18 @@ namespace Backend.Api.Controllers
         {
             try
             {
+                // Validate the stationDto object if the _validator is not null
+                if (_validator != null)
+                {
+                    var validationResult = await _validator.ValidateAsync(stationDto);
+                    if (!validationResult.IsValid)
+                    {
+                        var validationErrors = validationResult.Errors.Select(error => $"{error.PropertyName}: {error.ErrorMessage}");
+                        var errorMessage = string.Join("\n", validationErrors);
+                        return BadRequest(new { message = errorMessage });
+                    }
+                }
+
                 var station = await _stationService.CreateStationAsync(stationDto);
 
                 return CreatedAtAction(nameof(GetStation), new { id = station.ID }, station);
@@ -35,6 +44,7 @@ namespace Backend.Api.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
         [HttpGet("{id}")]
         [Authorize]
         public async Task<IActionResult> GetStation(int id)
@@ -62,6 +72,17 @@ namespace Backend.Api.Controllers
         {
             try
             {
+                // Validate the stationDto object if the _validator is not null
+                if (_validator != null)
+                {
+                    var validationResult = await _validator.ValidateAsync(stationDto);
+                    if (!validationResult.IsValid)
+                    {
+                        var validationErrors = validationResult.Errors.Select(error => $"{error.PropertyName}: {error.ErrorMessage}");
+                        var errorMessage = string.Join("\n", validationErrors);
+                        return BadRequest(new { message = errorMessage });
+                    }
+                }
                 await _stationService.UpdateStationAsync(id, stationDto);
                 return Ok(new { message = "Station updated successfully." });
             }
@@ -72,7 +93,7 @@ namespace Backend.Api.Controllers
         }
         [HttpDelete("{id}")]
         [Authorize]
-        public async Task<IActionResult> DeleteStation(int id) 
+        public async Task<IActionResult> DeleteStation(int id)
         {
             try
             {

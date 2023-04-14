@@ -47,8 +47,10 @@ namespace Backend.Api.Controllers
                 var returnJourneys = journeys.Where(j => j.ReturnStationId == id).AsQueryable();
                 model.DepartureJourneyCount = departureJourneys.Count();
                 model.ReturnJourneyCount = returnJourneys.Count();
-                model.AverageDistanceOfDepartureJourneys = departureJourneys.Any() ? departureJourneys.Average(j => j.CoveredDistanceInMeters) : 0;
-                model.AverageDistanceOfReturnJourneys = returnJourneys.Any() ? returnJourneys.Average(j => j.CoveredDistanceInMeters) : 0;
+                //model.AverageDistanceOfDepartureJourneys = departureJourneys.Any() ? departureJourneys.Average(j => j.CoveredDistanceInMeters) : 0;
+                //model.AverageDistanceOfReturnJourneys = returnJourneys.Any() ? returnJourneys.Average(j => j.CoveredDistanceInMeters) : 0;
+                model.AverageDistanceOfDepartureJourneys = departureJourneys.Any() ? (double)departureJourneys.Average(j => j.CoveredDistanceInMeters) : 0;
+                model.AverageDistanceOfReturnJourneys = returnJourneys.Any() ? (double)returnJourneys.Average(j => j.CoveredDistanceInMeters) : 0;
                 model.Top5ReturnStations = (GetTop5StationsAsync(returnJourneys, id))
                     .ToDictionary(station => station.ID, station => station.JourneyCount);
                 model.Top5DepartureStations = (GetTop5StationsAsync(departureJourneys, id))
@@ -65,7 +67,7 @@ namespace Backend.Api.Controllers
 
                 model.Top5DepartureStations = (await _journeyService.GetTop5DepartureStationsForStationAsync(id))
                     .ToDictionary(pair => pair.Key.ID, pair => pair.Value);
-                
+
 
             }
 

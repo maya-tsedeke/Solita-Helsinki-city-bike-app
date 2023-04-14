@@ -30,19 +30,19 @@ namespace Backend.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<double>("CoveredDistanceInMeters")
+                    b.Property<double?>("CoveredDistanceInMeters")
                         .HasColumnType("float");
 
-                    b.Property<DateTime>("Departure")
+                    b.Property<DateTime?>("Departure")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DepartureStationId")
+                    b.Property<int?>("DepartureStationId")
                         .HasColumnType("int");
 
-                    b.Property<double>("DurationInSeconds")
+                    b.Property<double?>("DurationInSeconds")
                         .HasColumnType("float");
 
-                    b.Property<DateTime>("Return")
+                    b.Property<DateTime?>("Return")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("ReturnStationId")
@@ -153,8 +153,7 @@ namespace Backend.Infrastructure.Migrations
                     b.HasOne("Backend.Domain.Entities.Station", "DepartureStation")
                         .WithMany("DepartureJourneys")
                         .HasForeignKey("DepartureStationId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("Backend.Domain.Entities.Station", "ReturnStation")
                         .WithMany("ReturnJourneys")

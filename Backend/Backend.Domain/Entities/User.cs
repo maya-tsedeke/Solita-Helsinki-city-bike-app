@@ -19,8 +19,7 @@ namespace Backend.Domain.Entities
         public byte[] PasswordSalt { get; set; }
         public virtual ICollection<Journey> Journeys { get; set; }
 
-        
-        public User() { }
 
+        public User() { }
     }
 }

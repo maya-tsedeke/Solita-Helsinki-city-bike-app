@@ -1,0 +1,6 @@
+{
+  "Backend.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api",
+  "Backend.Applications, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Applications",
+  "Backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Domain",
+  "Backend.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Infrastructure"
+}

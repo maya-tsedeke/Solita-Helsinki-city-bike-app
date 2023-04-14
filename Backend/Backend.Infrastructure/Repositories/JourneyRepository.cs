@@ -158,7 +158,7 @@ namespace Backend.Infrastructure.Repositories
         public async Task<IEnumerable<Journey>> GetByMonthAsync(int month)
         {
             return await _dbContext.Journeys
-                .Where(j => j.Departure.Month == month || j.Return.Month == month)
+                .Where(j => (j.Departure.HasValue && j.Departure.Value.Month == month) || (j.Return.HasValue && j.Return.Value.Month == month))
                 .Include(j => j.DepartureStation)
                 .Include(j => j.ReturnStation)
                 .ToListAsync();
@@ -179,16 +179,18 @@ namespace Backend.Infrastructure.Repositories
 
         public async Task<double> GetAverageDistanceOfDepartureJourneysFromStationAsync(int stationId)
         {
-            return await _dbContext.Journeys
+            var average_d = await _dbContext.Journeys
                 .Where(j => j.DepartureStationId == stationId)
                 .AverageAsync(j => j.CoveredDistanceInMeters);
+            return average_d ?? 0; // if average is null, return 0 
         }
 
         public async Task<double> GetAverageDistanceOfReturnJourneysToStationAsync(int stationId)
         {
-            return await _dbContext.Journeys
+            var average_r = await _dbContext.Journeys
                 .Where(j => j.ReturnStationId == stationId)
                 .AverageAsync(j => j.CoveredDistanceInMeters);
+            return average_r ?? 0;
         }
 
         public async Task<Dictionary<Station, int>> GetTop5ReturnStationsForStationAsync(int stationId)
