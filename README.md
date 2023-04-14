@@ -16,7 +16,8 @@ This is a web application that displays data about journeys made with city bikes
 4. [How to Run the Project](#how-to-run-the-project)
 5. [Docker](#docker)
 6. [Deploying to Azure](#deploying-to-azure)
-7. [Tests](#tests)
+7. [Automated Testing](#automated-tests)
+8. [Local Testing](#local-tests)
 8. [TODO](#todo)
 
 ### Technologies Used
@@ -117,17 +118,20 @@ Docker and Docker Buildx installed on your local machine.
 #### Configuration
 To configure the deployment, you need to add the following secrets to your GitHub repository:
 
-AzureAppService_PublishProfile_f4feb239a64a458b9dff4a986fce597f: the publish profile for the Azure Web App.
+AzureAppService_PublishProfile_f4feb239a64a458b9dff4a986fce597f: the publishing profile for the Azure Web App.
 AzureAppService_ContainerUsername_68d4122fc37d4a5ca5b75edbf6596c3c: the username for the Azure Container Registry.
 AzureAppService_ContainerPassword_a1377356b0a74b5da3d9bc0d7fb78165: the password for the Azure Container Registry.
 #### Workflow
-The workflow consists of two jobs: build and deploy.
-
-The build job builds the Docker image for the project and pushes it to the Azure Container Registry.
-
-The deploy job deploys the Docker image to the Azure Web App. It uses the publish profile to authenticate with the Azure Web App and the image from the Azure Container Registry.
-
-To run the workflow, make sure you have the necessary prerequisites and secrets set up, then push a commit to the main branch or manually trigger the workflow.
+The workflow consists of three jobs: Backend Test,build and deploy with Frontend product version.
+1. [x] The test job runs automated tests for the project using .NET Core.
+2. [x] The build job builds the Docker image for the project and pushes it to the Azure Container Registry.
+3. [x] The deployment job deploys the Docker image to the Azure Web App. It uses the publishing profile to authenticate with the Azure Web App and the image from the Azure Container Registry. 
+#### Some basic workflows included are:
+1. checkout: Checks out the code to the runner.
+2. setup-dotnet: Installs the .NET Core SDK on the runner. 
+3. restore: Restores the dependencies for the .NET Core project. 
+4. docker-login: Logs in to
+5. [x] To run the workflow, make sure you have the necessary prerequisites and secrets set up, then push a commit to the main branch or manually trigger the workflow.
 ### Endpoints
 The following endpoints are available in the project:
 
@@ -156,11 +160,13 @@ The following endpoints are available in the project:
 5. PUT api/User/{userId}: Update the information for a user.
 6. GET api/User/{userId}: Get the information for a user.
 7. DELETE api/User/{userId
-### Tests
-<a name="tests"></a>
-To ensure code quality and reliability, we have included automated tests in our project. These tests can be found in the Backend.Test folder and are executed using the command 'dotnet test Backend/Backend.Test/Backend.Test.csproj --configuration Release'. The test results will be displayed in the console and include the name of the test methods along with their pass/fail status.
-The project has E2E and Xunit tests. To run the tests in your local machine, use the following commands:
-
+### Automated Testsíng
+<a name="automated-testing"></a>
+We have integrated automated testing into our project to ensure code quality and reliability. We have used .NET Core for backend tests and Angular for frontend E2E tests. You can find the backend tests in the Backend.Test folder and frontend tests in the e2e folder.
+The test job runs automated tests for the project using 
+### Local Testing
+<a name="local-testing"></a>
+To run the tests locally, follow these instructions:
 ##### Backend
 1. Open a command prompt in the backend folder.
 2. Run dotnet test to run the Xunit tests.
@@ -170,8 +176,13 @@ The project has E2E and Xunit tests. To run the tests in your local machine, use
 ##### Frontend
 1. Open a command prompt in the frontend folder.
 2. Run ng e2e to run the E2E tests.
+```bash
+ ng e2e
+ ```
 ### TODO](#todo)
 <a name="todo"></a>
-1. Add pagination, ordering, searching, and filtering to journey and station lists.
-2. Improve error handling and validation.
-3. Add more tests for edge cases.
+As this project is developed with clean architecture design and repository patterns, we aim to implement SOLID principles to ensure reliability and maintainability. To achieve this goal, we have identified the following areas for improvement:
+
+1. [x] Enhance error handling and validation to provide a more robust and user-friendly experience.
+2. [x] Add more tests for edge cases to further enhance the reliability of the project.
+3. [x] Continuously improve the project's design and implementation by adhering to SOLID principles.
