@@ -33,13 +33,46 @@ The backend service is built using C# and .NET Core, while the frontend is built
 * Angular Bootstrap 
 ### Features
 <a name="features"></a>
-### Getting Started
+The Helsinki City Bike app allows users to view and filter data about journeys made with city bikes in the Helsinki Capital area. The app offers the following features:
+* Backend
+1. Import data from CSV files to a SQL Server database 
+2. Validate imported data before saving 
+3. Return a list of all journeys, including departure and return stations, covered distance in kilometers, and duration in minutes 
+4. Return a list of all stations, including total number of journeys starting and ending at the station 
+5. Return detailed information about a single station, including total number of journeys starting and ending at the station, and the average distance of journeys starting and ending at the station 
+6. Allow users to update the return station and return date for a specific journey 
+7. Provide Swagger documentation for all API endpoints
+* Frontend
+1. Import Station and Journey data from CSV files to a SQL Server database 
+2. Display a list of all journeys, including departure and return stations, covered distance in kilometers, and duration in minutes 
+3. Allow users to sort journeys by any column and filter by date range or station 
+4. Display a list of all stations, including total number of journeys starting and ending at the station 
+5. Allow users to filter stations by name or location and display station locations on a map 
+6. Display detailed information about a single station, including total number of journeys starting and ending at the station, and the average distance of journeys starting and ending at the station 
+7. Display charts showing the top 5 most popular departure and return stations for a specific station 
+8. Allow users to update the return station and return date for a specific journey
+### Getting Started 
+<a name="getting-started"></a>
 To get started with the Helsinki City Bike app, you will need to have the following software installed on your computer:
 * Visual Studio 2019 (with .NET Core 7.0)
 * SQL Server Management Studio (SSMS)
 * Node.js 
 * Angular CLI latest
-<a name="getting-started"></a>
+After installing the prerequisites, you can follow these steps:
+
+1. Clone the project repository to your machine. 
+2. Open the terminal and navigate to the project directory. 
+3. Run dotnet build to build the backend project. 
+4. Navigate to the ClientApp directory and run npm install to install the frontend dependencies. 
+5. Run npm start to start the frontend development server. 
+6. In a new terminal window, run dotnet run to start the backend server.
+### Docker
+You can also run the project using Docker. Follow these steps:
+
+1. Clone the project repository to your machine.
+2. Open the terminal and navigate to the project directory.
+3. Run docker-compose build to build the Docker containers.
+4. Run docker-compose up to start the containers.
 ### Running the App
 To run the Helsinki City Bike app, follow these steps:
 1. Clone the repository to your local machine 
@@ -57,6 +90,38 @@ dotnet run
 npm install
 ng serve
 ```
+### Deploying to Azure
+The project is deployed in an Azure Web App container. You can access the application through the following URL: https://solitawebapp.azurewebsites.net/
+### Endpoints
+The following endpoints are available in the project:
+
+#### Import
+1. POST api/Import/Stations: Import the bicycle station data from the dataset into the database.
+2. POST api/Import/Journeys: Import the journey data from the datasets into the database.
+#### Journey List
+1. GET api/JourneyList: List all the journeys in the database.
+2. POST api/JourneyList/Add: Add a new journey to the database.
+3. PUT api/JourneyList/{journeyId}/return: Update the return info for a journey.
+4. GET api/JourneyList/{journeyId}/User: Get the user information for a journey.
+5. GET api/JourneyList/{journeyId}: Get the information for a journey.
+#### Single View
+1. GET api/Singleview/{stationId}: Get the information for a single station, including the number of journeys starting and ending at the station and the average distance of journeys starting and ending at the station.
+2. GET api/Singleview/{stationId}?month={month}: Get the information for a single station for a specific month.
+#### Station
+1. POST api/Station/Create: Create a new station in the database.
+2. PUT api/Station/Create/{stationId}: Update the information for a station in the database.
+3. GET api/Station/Create/{stationId}: Get the information for a station in the database.
+4. DELETE api/Station/Create/{stationId}: Delete a station from the database.
+#### Station List
+1. GET api/StationList: List all the stations in the database. Limited to 100 rows but can be changeable by user
+2. GET api/User: Get the information for the currently authenticated user.
+3. POST api/User/authenticate: Authenticate a user and return a JWT token.
+4. POST api/User/register: Register a new user.
+5. PUT api/User/{userId}: Update the information for a user.
+6. GET api/User/{userId}: Get the information for a user.
+7. DELETE api/User/{userId
+
+
 ##  Prerequisites 
 * Docker installed
 * Azure subscription (for deployment)
