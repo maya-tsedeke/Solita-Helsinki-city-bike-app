@@ -1,6 +1,6 @@
 
-# Helsinki city bike app (Dev Academy pre-assignment solution)
-
+## Helsinki city bike app (Dev Academy pre-assignment solution)
+### Description of the Project
 A brief description of what this project does and who it's for
 
 Implementation of a web application for displaying data from journeys made with city bikes in the Helsinki Capital area. The backend is implemented using .NET and includes importing data from CSV files to a database, validating data before importing, and filtering imported journeys based on their duration and distance, user authorization with token. The front-end is implemented using Angular and includes a journey list view that import, shows departure and return stations, covered distance, and duration, location on map, customer travel history, customer daily, weekly, monthly, and yearly travel report. Additionally, the frontend includes a station list that shows station information, and a single station view that includes station details and statistics such as the number of journeys starting and ending at the station, the average distance of starting and ending journeys, and the top 5 most popular return and departure stations. The implementation also includes user login authorization using tokens.
@@ -10,27 +10,29 @@ This is a web application that displays data about journeys made with city bikes
 
 #### Table of Contents
 
-* [Technologies Used](#technologies-used)
-* [Features](#features)
-* [Getting Started](#getting-started)
-* [Running the App](#running-the-app)
-* [Testing](#testing)
-* [Contributing](#contributing)
-* [License](#license)
+1. [Technologies Used](#technologies-used)
+2. [Features](#features)
+3. [Prerequisites](#prerequisites)
+4. [How to Run the Project](#how-to-run-the-project)
+5. [Docker](#docker)
+6. [Deploying to Azure](#deploying-to-azure)
+7. [Tests](#tests)
+8. [TODO](#todo)
+
 ### Technologies Used
 <a name="technologies_used"></a>
 The backend service is built using C# and .NET Core, while the frontend is built with Angular and TypeScript. The following libraries and frameworks were used:
 
 #### Backend
-* .NET Core 7.0
-* Entity Framework Core
-* AutoMapper
-* Swagger
-* Moq
-* xUnit
+1. .NET Core 7.0
+2. Entity Framework Core
+3. AutoMapper
+4. Swagger
+5. Moq
+6. xUnit
 #### Frontend
-* Angular 15
-* Angular Bootstrap 
+1. Angular 15
+2. Angular Bootstrap
 ### Features
 <a name="features"></a>
 The Helsinki City Bike app allows users to view and filter data about journeys made with city bikes in the Helsinki Capital area. The app offers the following features:
@@ -51,46 +53,56 @@ The Helsinki City Bike app allows users to view and filter data about journeys m
 6. Display detailed information about a single station, including total number of journeys starting and ending at the station, and the average distance of journeys starting and ending at the station 
 7. Display charts showing the top 5 most popular departure and return stations for a specific station 
 8. Allow users to update the return station and return date for a specific journey
-### Getting Started 
-<a name="getting-started"></a>
+### Prerequisites 
+<a name="prerequisites"></a>
 To get started with the Helsinki City Bike app, you will need to have the following software installed on your computer:
-* Visual Studio 2019 (with .NET Core 7.0)
-* SQL Server Management Studio (SSMS)
-* Node.js 
-* Angular CLI latest
-After installing the prerequisites, you can follow these steps:
-
+1. Visual Studio (with .NET Core 7.0)
+2. SQL Server Management Studio (SSMS)
+3. Node.js with the latest version
+4. Angular CLI with the latest version
+### How to Run the Project
+<a name="how-to-run-the-project"></a>
+##### After installing the prerequisites, you can follow these steps:
 1. Clone the project repository to your machine. 
 2. Open the terminal and navigate to the project directory. 
 3. Run dotnet build to build the backend project. 
 4. Navigate to the ClientApp directory and run npm install to install the frontend dependencies. 
 5. Run npm start to start the frontend development server. 
 6. In a new terminal window, run dotnet run to start the backend server.
-### Docker
+#### Docker
+<a name="docker"></a>
 You can also run the project using Docker. Follow these steps:
 
 1. Clone the project repository to your machine.
 2. Open the terminal and navigate to the project directory.
 3. Run docker-compose build to build the Docker containers.
 4. Run docker-compose up to start the containers.
-### Running the App
+#### Running the App
+<a name="running-the-app"></a>
 To run the Helsinki City Bike app, follow these steps:
 1. Clone the repository to your local machine 
-2. In SSMS, create a new database named "CityBike" (or any other name of your choosing)
+```bash
+git clone https://github.com/maya-tsedeke/Solita-Helsinki-city-bike-app.git
+```
+2. In SSMS, create a new database named "StationDB" (or any other name of your choosing)
 3. In Visual Studio, open the "appsettings.json" file and update the connection string to point to your database 
 4. Open a command prompt and navigate to the "Backend" folder of the repository 
 5. Run the following commands to create the database schema and seed the database with data:
-```bash
-dotnet ef database update
-dotnet run
-```
 6. Open a second command prompt and navigate to the "Frontend" folder of the repository 
 7. Run the following commands to install the necessary dependencies and start the Angular development server:
 ```bash
+cd Frontend
 npm install
-ng serve
+npm run build --prod
+```
+After complete build --prod copy the contents of prod version of the angular frontend from the Frontend/dist/frontend/ and pest and replace it in folder Backend/Backend.Api/wwwroot/ then run the following in your CMD interface
+```bash
+cd Backend\Backend.Api
+dotnet ef database update
+dotnet run
 ```
 ### Deploying to Azure
+<a name="deploying-to-azure"></a>
 The project is deployed in an Azure Web App container. You can access the application through the following URL: https://solitawebapp.azurewebsites.net/
 ### Endpoints
 The following endpoints are available in the project:
@@ -120,56 +132,18 @@ The following endpoints are available in the project:
 5. PUT api/User/{userId}: Update the information for a user.
 6. GET api/User/{userId}: Get the information for a user.
 7. DELETE api/User/{userId
+### Tests
+<a name="tests"></a>
+The project has E2E and Xunit tests. To run the tests, use the following commands:
 
-
-##  Prerequisites 
-* Docker installed
-* Azure subscription (for deployment)
-## Running the application
-<a name="running-the-app"></a>
-### Testing
-<a name="testing"></a>
-### Contributing
-<a name="contributing"></a>
-### License
-<a name="license"></a>
-Clone the repository:
-## Deployment
-
-To deploy this project run
-
-```bash
-  git clone https://github.com/[username]/[repository].git
-
-```
-Build the Docker image:
-```bash
-  docker build -t [image-name] .
-
-```
-Run the Docker container:
-```bash
- docker run -p 8080:80 [image-name]
-
-```
-
-### Deploying to Azure
-```bash
-az acr create --resource-group [resource-group] --name [registry-name] --sku Basic
-az acr login --name [registry-name]
-docker tag [image-name] [registry-name].azurecr.io/[image-name]:[tag]
-docker push [registry-name].azurecr.io/[image-name]:[tag]
-```
-Create an Azure Container Instance and deploy the container:
-```bash
-az container create --resource-group [resource-group] --name [container-name] --image [registry-name].azurecr.io/[image-name]:[tag] --cpu 1 --memory 1 --ports 80
-
-```
-Get the IP address or domain URL of the container:
-```bash
-az container show --resource-group [resource-group] --name [container-name] --query ipAddress.fqdn
-
-```
-Access the application in your browser by going to http://[ip-address-or-domain]
-## Installation
-<a name="installation"></a>
+##### Backend
+1. Open a command prompt in the backend folder.
+2. Run dotnet test to run the Xunit tests.
+##### Frontend
+1. Open a command prompt in the frontend folder.
+2. Run ng e2e to run the E2E tests.
+### TODO](#todo)
+<a name="todo"></a>
+1. Add pagination, ordering, searching, and filtering to journey and station lists.
+2. Improve error handling and validation.
+3. Add more tests for edge cases.
