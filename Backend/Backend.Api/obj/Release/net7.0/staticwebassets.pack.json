@@ -1,0 +1,57 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\3rdpartylicenses.txt",
+      "PackagePath": "staticwebassets\\3rdpartylicenses.txt"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\assets\\css\\common.scss",
+      "PackagePath": "staticwebassets\\assets\\css\\common.scss"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\assets\\map-marker-icon@2x.png",
+      "PackagePath": "staticwebassets\\assets\\map-marker-icon@2x.png"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\main.aa1bf53c7323b6b9.js",
+      "PackagePath": "staticwebassets\\main.aa1bf53c7323b6b9.js"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\polyfills.0ae7ecd3edb81717.js",
+      "PackagePath": "staticwebassets\\polyfills.0ae7ecd3edb81717.js"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\runtime.b52cd812db2fe880.js",
+      "PackagePath": "staticwebassets\\runtime.b52cd812db2fe880.js"
+    },
+    {
+      "Id": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\styles.666e1004b79dd49c.css",
+      "PackagePath": "staticwebassets\\styles.666e1004b79dd49c.css"
+    },
+    {
+      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.Backend.Api.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.build.Backend.Api.props",
+      "PackagePath": "build\\Backend.Api.props"
+    },
+    {
+      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.Backend.Api.props",
+      "PackagePath": "buildMultiTargeting\\Backend.Api.props"
+    },
+    {
+      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.buildTransitive.Backend.Api.props",
+      "PackagePath": "buildTransitive\\Backend.Api.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

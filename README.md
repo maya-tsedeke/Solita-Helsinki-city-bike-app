@@ -104,6 +104,30 @@ dotnet run
 ### Deploying to Azure
 <a name="deploying-to-azure"></a>
 The project is deployed in an Azure Web App container. You can access the application through the following URL: https://solitawebapp.azurewebsites.net/
+#### Automated Azure Deployment
+To automate the deployment of this project to Azure Web App, we use GitHub Actions. The workflow file for the deployment is defined in .github/workflows/main_solitawebapp.yml. The workflow is triggered when a commit is pushed to the main branch or when manually triggered.
+
+#### Prerequisites
+Before setting up the deployment, make sure you have the following:
+
+An Azure Web App instance with the appropriate app service plan.
+An Azure Container Registry instance to host the Docker images.
+A publish profile for the Azure Web App.
+Docker and Docker Buildx installed on your local machine.
+#### Configuration
+To configure the deployment, you need to add the following secrets to your GitHub repository:
+
+AzureAppService_PublishProfile_f4feb239a64a458b9dff4a986fce597f: the publish profile for the Azure Web App.
+AzureAppService_ContainerUsername_68d4122fc37d4a5ca5b75edbf6596c3c: the username for the Azure Container Registry.
+AzureAppService_ContainerPassword_a1377356b0a74b5da3d9bc0d7fb78165: the password for the Azure Container Registry.
+#### Workflow
+The workflow consists of two jobs: build and deploy.
+
+The build job builds the Docker image for the project and pushes it to the Azure Container Registry.
+
+The deploy job deploys the Docker image to the Azure Web App. It uses the publish profile to authenticate with the Azure Web App and the image from the Azure Container Registry.
+
+To run the workflow, make sure you have the necessary prerequisites and secrets set up, then push a commit to the main branch or manually trigger the workflow.
 ### Endpoints
 The following endpoints are available in the project:
 
@@ -134,11 +158,15 @@ The following endpoints are available in the project:
 7. DELETE api/User/{userId
 ### Tests
 <a name="tests"></a>
-The project has E2E and Xunit tests. To run the tests, use the following commands:
+To ensure code quality and reliability, we have included automated tests in our project. These tests can be found in the Backend.Test folder and are executed using the command 'dotnet test Backend/Backend.Test/Backend.Test.csproj --configuration Release'. The test results will be displayed in the console and include the name of the test methods along with their pass/fail status.
+The project has E2E and Xunit tests. To run the tests in your local machine, use the following commands:
 
 ##### Backend
 1. Open a command prompt in the backend folder.
 2. Run dotnet test to run the Xunit tests.
+```bash
+ dotnet test Backend.Test.csproj --configuration Release
+ ```
 ##### Frontend
 1. Open a command prompt in the frontend folder.
 2. Run ng e2e to run the E2E tests.
