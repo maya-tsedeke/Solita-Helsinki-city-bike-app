@@ -2,9 +2,9 @@
 ## Helsinki city bike app (Dev Academy pre-assignment solution)
 ### Description of the Project
 A brief description of what this project does and who it's for
-
+![Screenshot of the application](Image/singlestation.png)
 Implementation of a web application for displaying data from journeys made with city bikes in the Helsinki Capital area. The backend is implemented using .NET and includes importing data from CSV files to a database, validating data before importing, and filtering imported journeys based on their duration and distance, user authorization with token. The front-end is implemented using Angular and includes a journey list view that import, shows departure and return stations, covered distance, and duration, location on map, customer travel history, customer daily, weekly, monthly, and yearly travel report. Additionally, the frontend includes a station list that shows station information, and a single station view that includes station details and statistics such as the number of journeys starting and ending at the station, the average distance of starting and ending journeys, and the top 5 most popular return and departure stations. The implementation also includes user login authorization using tokens.
-
+![login Page](Image/login.png)
 This is an application that displays the status of Helsinki city bikes in a web interface. The application retrieves the real-time data from the Helsinki City bike API and shows the status of each bike station on the map.
 This is a web application that displays data about journeys made with city bikes in the Helsinki Capital area. The project consists of both a backend service and a frontend UI.
 
@@ -54,6 +54,20 @@ The Helsinki City Bike app allows users to view and filter data about journeys m
 6. Display detailed information about a single station, including total number of journeys starting and ending at the station, and the average distance of journeys starting and ending at the station 
 7. Display charts showing the top 5 most popular departure and return stations for a specific station 
 8. Allow users to update the return station and return date for a specific journey
+#### Additional: 
+1. Creating UI for adding journeys or bicycle stations
+2. Single Station location on the map
+3. The average distance of a journey starting from the station
+4. The average distance of a journey ending at the station
+5. Top 5 most popular return stations for journeys starting from the station
+6. Top 5 most popular departure stations for journeys ending at the station
+7. Ability to filter all the calculations per month
+8. Customer dashboard for reading KM and Duration in hour for their past travel
+9. Ability to filter top latest journeys history calculations per logged-in user or customer can start or end journey
+10. Endpoints to store new journeys data or new bicycle stations
+11. Running backend in Docker
+12. Running backend in Azure Cloud
+13. Implementing automated E2E tests
 ### Prerequisites 
 <a name="prerequisites"></a>
 To get started with the Helsinki City Bike app, you will need to have the following software installed on your computer:
