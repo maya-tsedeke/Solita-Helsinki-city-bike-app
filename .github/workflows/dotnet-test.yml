@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: Test
+    name: Backend Test
     runs-on: ubuntu-latest
 
     steps:
@@ -27,5 +27,5 @@ jobs:
       run: dotnet build --configuration Release
 
     - name: Run tests
-      run: dotnet test ./Backend.Test/Backend.Test.csproj --configuration Release
+      run: dotnet test ./Backend.Test/Backend.Test.csproj --configuration Release --logger console;verbosity=detailed
 
