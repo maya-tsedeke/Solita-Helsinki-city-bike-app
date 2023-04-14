@@ -9,16 +9,16 @@ This is an application that displays the status of Helsinki city bikes in a web 
 This is a web application that displays data about journeys made with city bikes in the Helsinki Capital area. The project consists of both a backend service and a frontend UI.
 
 #### Table of Contents
-* Technologies Used
-* Features
-* Getting Started
-* [Installation](#installation)
-* Running the App
-* Testing
-* Contributing
-* License
-#### Technologies Used
-<a 
+
+* [Technologies Used](#technologies-used)
+* [Features](#features)
+* [Getting Started](#getting-started)
+* [Running the App](#running-the-app)
+* [Testing](#testing)
+* [Contributing](#contributing)
+* [License](#license)
+### Technologies Used
+<a name="technologies_used"></a>
 The backend service is built using C# and .NET Core, while the frontend is built with Angular and TypeScript. The following libraries and frameworks were used:
 
 #### Backend
@@ -30,11 +30,44 @@ The backend service is built using C# and .NET Core, while the frontend is built
 * xUnit
 #### Frontend
 * Angular 15
-* Angular Bootstrap 4
+* Angular Bootstrap 
+### Features
+<a name="features"></a>
+### Getting Started
+To get started with the Helsinki City Bike app, you will need to have the following software installed on your computer:
+* Visual Studio 2019 (with .NET Core 7.0)
+* SQL Server Management Studio (SSMS)
+* Node.js 
+* Angular CLI latest
+<a name="getting-started"></a>
+### Running the App
+To run the Helsinki City Bike app, follow these steps:
+1. Clone the repository to your local machine 
+2. In SSMS, create a new database named "CityBike" (or any other name of your choosing)
+3. In Visual Studio, open the "appsettings.json" file and update the connection string to point to your database 
+4. Open a command prompt and navigate to the "Backend" folder of the repository 
+5. Run the following commands to create the database schema and seed the database with data:
+```bash
+dotnet ef database update
+dotnet run
+```
+6. Open a second command prompt and navigate to the "Frontend" folder of the repository 
+7. Run the following commands to install the necessary dependencies and start the Angular development server:
+```bash
+npm install
+ng serve
+```
 ##  Prerequisites 
 * Docker installed
 * Azure subscription (for deployment)
 ## Running the application
+<a name="running-the-app"></a>
+### Testing
+<a name="testing"></a>
+### Contributing
+<a name="contributing"></a>
+### License
+<a name="license"></a>
 Clone the repository:
 ## Deployment
 
@@ -73,4 +106,5 @@ az container show --resource-group [resource-group] --name [container-name] --qu
 
 ```
 Access the application in your browser by going to http://[ip-address-or-domain]
-name="installation"></a>
+## Installation
+<a name="installation"></a>
