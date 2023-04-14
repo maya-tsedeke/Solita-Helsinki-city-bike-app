@@ -16,9 +16,9 @@ This is a web application that displays data about journeys made with city bikes
 4. [How to Run the Project](#how-to-run-the-project)
 5. [Docker](#docker)
 6. [Deploying to Azure](#deploying-to-azure)
-7. [Automated Testing](#automated-tests)
-8. [Local Testing](#local-tests)
-8. [TODO](#todo)
+7. [Automated Testing](#automated-testing)
+8. [Local Testing](#local-testing)
+9. [TODO](#todo---todo-)
 
 ### Technologies Used
 <a name="technologies_used"></a>
@@ -160,7 +160,7 @@ The following endpoints are available in the project:
 5. PUT api/User/{userId}: Update the information for a user.
 6. GET api/User/{userId}: Get the information for a user.
 7. DELETE api/User/{userId
-### Automated Testsíng
+### Automated Testing
 <a name="automated-testing"></a>
 We have integrated automated testing into our project to ensure code quality and reliability. We have used .NET Core for backend tests and Angular for frontend E2E tests. You can find the backend tests in the Backend.Test folder and frontend tests in the e2e folder.
 The test job runs automated tests for the project using 
@@ -180,7 +180,7 @@ To run the tests locally, follow these instructions:
  ng e2e
  ```
 ### TODO](#todo)
-<a name="todo"></a>
+<a name="todo---todo-"></a>
 As this project is developed with clean architecture design and repository patterns, we aim to implement SOLID principles to ensure reliability and maintainability. To achieve this goal, we have identified the following areas for improvement:
 
 1. [x] Enhance error handling and validation to provide a more robust and user-friendly experience.
