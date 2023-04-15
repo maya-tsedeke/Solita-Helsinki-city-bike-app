@@ -3,23 +3,9 @@
     "apis1": {
       "restored": true,
       "restoreTime": "2023-04-09T20:52:33.5706298Z"
-    },
-    "mssql1": {
-      "restored": true,
-      "restoreTime": "2023-04-10T00:09:13.6567436Z"
     }
   },
   "parameters": {
-    "mssql1.subscriptionId": {
-      "Name": "mssql1.subscriptionId",
-      "Type": "subscription",
-      "Value": "df9d8a7b-fe7f-4206-a937-98263c660cb3"
-    },
-    "mssql1.resourceGroupName": {
-      "Name": "mssql1.resourceGroupName",
-      "Type": "resourceGroup",
-      "Value": "BikestationDB"
-    },
     "apis1.resourceGroupName": {
       "Name": "apis1.resourceGroupName",
       "Type": "resourceGroup",

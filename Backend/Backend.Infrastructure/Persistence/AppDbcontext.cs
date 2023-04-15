@@ -1,6 +1,5 @@
 ﻿using Backend.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace Backend.Infrastructure.Persistence
 {
@@ -44,5 +43,5 @@ namespace Backend.Infrastructure.Persistence
 
         }
     }
-    
+
 }

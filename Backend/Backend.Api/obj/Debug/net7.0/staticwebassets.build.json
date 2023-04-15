@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "P5ePj6o2lL2AofgzzsbD2HOvn4EOCRCyxtltSzvv7bY=",
+  "Hash": "1DNTaH+B/6o2zdIP3gZvBP+95qzmLQLbPPNqHpR84dI=",
   "Source": "Backend.Api",
   "BasePath": "_content/Backend.Api",
   "Mode": "Default",
@@ -102,12 +102,12 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
-      "Identity": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\main.aa1bf53c7323b6b9.js",
+      "Identity": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\main.38514a3b35c9b6f0.js",
       "SourceId": "Backend.Api",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\",
       "BasePath": "_content/Backend.Api",
-      "RelativePath": "main.aa1bf53c7323b6b9.js",
+      "RelativePath": "main.38514a3b35c9b6f0.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -116,7 +116,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\main.aa1bf53c7323b6b9.js"
+      "OriginalItemSpec": "wwwroot\\main.38514a3b35c9b6f0.js"
     },
     {
       "Identity": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\polyfills.0ae7ecd3edb81717.js",
@@ -153,12 +153,12 @@
       "OriginalItemSpec": "wwwroot\\runtime.b52cd812db2fe880.js"
     },
     {
-      "Identity": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\styles.666e1004b79dd49c.css",
+      "Identity": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\styles.3b1520e970a67bad.css",
       "SourceId": "Backend.Api",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Api\\wwwroot\\",
       "BasePath": "_content/Backend.Api",
-      "RelativePath": "styles.666e1004b79dd49c.css",
+      "RelativePath": "styles.3b1520e970a67bad.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -167,7 +167,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\styles.666e1004b79dd49c.css"
+      "OriginalItemSpec": "wwwroot\\styles.3b1520e970a67bad.css"
     }
   ]
 }
