@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Backend.Domain
-build_property.ProjectDir = c:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Domain\
+build_property.ProjectDir = C:\Users\tshabe\Documents\GitHub\Solita-Helsinki-city-bike-app\Backend\Backend.Domain\

@@ -118,26 +118,8 @@ namespace Backend.Infrastructure.Repositories
         public async Task AddJourney(Journey journey)
         {
             _dbContext.Journeys.Add(journey);
-
-            try
-            {
-                // Call a method that saves changes to the database
-                await _dbContext.SaveChangesAsync();
-            }
-            catch (DbUpdateException ex)
-            {
-                // Get the inner exception if there is one
-                Exception innerEx = ex.InnerException;
-
-                // Loop through inner exceptions to get the root cause of the error
-                while (innerEx != null && innerEx.InnerException != null)
-                {
-                    innerEx = innerEx.InnerException;
-                }
-
-                // Log or handle the error
-                Console.WriteLine($"Error: {innerEx?.Message}");
-            }
+            // Call a method that saves changes to the database
+            await _dbContext.SaveChangesAsync();
         }
         public async Task UpdateJourney(Journey journey)
         {

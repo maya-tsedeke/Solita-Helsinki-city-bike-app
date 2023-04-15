@@ -2,7 +2,8 @@
 ## Helsinki city bike app (Dev Academy pre-assignment solution)
 ### Description of the Project
 A brief description of what this project does and who it's for
-![Screenshot of the application](Image/singlestation.png)
+<img src="Image/list.png" alt="image" width="400" height="300"><img src="Image/singlestation.png" alt="Single view" width="400" height="300">
+![login Page](Image/journey.png)
 Implementation of a web application for displaying data from journeys made with city bikes in the Helsinki Capital area. The backend is implemented using .NET and includes importing data from CSV files to a database, validating data before importing, and filtering imported journeys based on their duration and distance, user authorization with token. The front-end is implemented using Angular and includes a journey list view that import, shows departure and return stations, covered distance, and duration, location on map, customer travel history, customer daily, weekly, monthly, and yearly travel report. Additionally, the frontend includes a station list that shows station information, and a single station view that includes station details and statistics such as the number of journeys starting and ending at the station, the average distance of starting and ending journeys, and the top 5 most popular return and departure stations. The implementation also includes user login authorization using tokens.
 ![login Page](Image/login.png)
 This is an application that displays the status of Helsinki city bikes in a web interface. The application retrieves the real-time data from the Helsinki City bike API and shows the status of each bike station on the map.
@@ -95,16 +96,16 @@ You can also run the project using Docker. Follow these steps:
 #### Running the App
 <a name="running-the-app"></a>
 To run the Helsinki City Bike app, follow these steps:
-1. Clone the repository to your local machine 
+1. [x] Clone the repository to your local machine 
 ```bash
 git clone https://github.com/maya-tsedeke/Solita-Helsinki-city-bike-app.git
 ```
-2. In SSMS, create a new database named "StationDB" (or any other name of your choosing)
-3. In Visual Studio, open the "appsettings.json" file and update the connection string to point to your database 
-4. Open a command prompt and navigate to the "Backend" folder of the repository 
-5. Run the following commands to create the database schema and seed the database with data:
-6. Open a second command prompt and navigate to the "Frontend" folder of the repository 
-7. Run the following commands to install the necessary dependencies and start the Angular development server:
+1. In SSMS, create a new database named "StationDB" (or any other name of your choosing)
+2. In Visual Studio, open the "appsettings.json" file and update the connection string to point to your database 
+3. Open a command prompt and navigate to the "Backend" folder of the repository 
+4. Run the following commands to create the database schema and seed the database with data:
+5. Open a second command prompt and navigate to the "Frontend" folder of the repository 
+6. Run the following commands to install the necessary dependencies and start the Angular development server:
 ```bash
 cd Frontend
 npm install

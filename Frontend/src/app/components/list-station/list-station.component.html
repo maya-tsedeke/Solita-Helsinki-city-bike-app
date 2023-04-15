@@ -14,7 +14,7 @@
     </div>
     <div class="col-md-4">
       <div class="form-group">
-        
+
         <button class="btn btn-sm btn-primary mr-2" title="Create" (click)="create()" >
           Create
         </button>
@@ -54,10 +54,11 @@
             <button class="btn btn-sm btn-success mr-2" title="Edit" (click)="edit(row)">
               <span class="fa fa-edit"></span>
             </button>
-            <app-deletestation [row]="row" (deleteClicked)="delete(row)" class="delete-button">
-              <span class="fas fa-trash-alt"></span>
-            </app-deletestation>
+           <app-deletestation [row]="row" (deleteClicked)="delete(row)" >
+
+             </app-deletestation>
           </td>
+
         </tr>
       </tbody>
 

@@ -13,7 +13,7 @@ import { ApiService } from 'src/app/Services/api.service';
 export class ListStationComponent implements OnInit {
   listStations!: Station[];
   rowLimit=100
-  limit = 5;
+  limit = 8;
   page = 3;
   orderBy:string = 'name'; // Add initial value
   search = '';
@@ -40,7 +40,7 @@ export class ListStationComponent implements OnInit {
   }
   searchValue: string = '';
 
- 
+
   view(row: any) {
     this.router.navigate(['/report', row.id]);
   }
@@ -120,7 +120,7 @@ getStations(): void {
 }
   applyFilter(): void {
     // reset offset and current page when applying new filter
-  // reset offset and current page when applying new filter  
+  // reset offset and current page when applying new filter
   this.rowLimit=this.rowLimit;
   this.page = 0;
   this.currentPage = 1;
@@ -142,7 +142,7 @@ getStations(): void {
   }
 
   nextPage(): void {
- 
+
     if (this.currentPage < this.totalPages) {
       this.page += this.limit;
       this.currentPage++;
@@ -157,11 +157,11 @@ getStations(): void {
       this.orderBy = column;
       this.sortDirection = 'asc';
     }
-  
+
     this.rows.sort((a, b) => {
       const valueA = typeof a[column] === 'string' ? a[column].toLowerCase() : a[column];
       const valueB = typeof b[column] === 'string' ? b[column].toLowerCase() : b[column];
-  
+
       if (valueA < valueB) {
         return this.sortDirection === 'asc' ? -1 : 1;
       } else if (valueA > valueB) {
@@ -171,6 +171,6 @@ getStations(): void {
       }
     });
   }
-  
-  
+
+
 }

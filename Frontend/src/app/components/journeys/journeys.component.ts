@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { NgToastService } from 'ng-angular-popup';
-import { Journey, Station, UserInfo } from 'src/app/Interfaces/station-details';
-import { ApiService } from 'src/app/Services/api.service';
-import { AuthService } from 'src/app/Services/auth.service';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {NgToastService} from 'ng-angular-popup';
+import {Journey, Station, UserInfo} from 'src/app/Interfaces/station-details';
+import {ApiService} from 'src/app/Services/api.service';
+import {AuthService} from 'src/app/Services/auth.service';
+
 @Component({
   selector: 'app-journeys',
   templateUrl: './journeys.component.html',
@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class JourneysComponent implements OnInit {
   journeys: any[] = [];
-  ;// Add this line
+  // Add this line
   form!: FormGroup;
   stations!: Station[];
   listStations!: Station[];
@@ -46,8 +46,7 @@ export class JourneysComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder, private api: ApiService, private toast: NgToastService
-    , private auth: AuthService,
-    private router: Router) {
+    , private auth: AuthService,) {
     this.form = this.fb.group({
       departureStationId: ['', Validators.required],
     });
@@ -83,13 +82,14 @@ export class JourneysComponent implements OnInit {
               summary: 'Success',
               duration: 5000,
             });
+            console.log(res);
             this.form.reset();
             this.stopTimer()
             this.onStatus();
           },
           error: (error) => {
             console.log('Error: ', error);
-           
+
               this.toast.error({
                 detail: error,
                 summary: 'Error',
@@ -178,9 +178,9 @@ export class JourneysComponent implements OnInit {
     if (!selectElement || !selectElement.value) {
       return;
     }
-    const selectedStationId = selectElement.value;
-    const id = +selectedStationId;
-    const selectedStation = this.stations.find(station => station.id == id);
+    //const selectedStationId = selectElement.value;
+    //const id = +selectedStationId;
+    //const selectedStation = this.stations.find(station => station.id == id);
   }
 
   onStatus() {
@@ -230,9 +230,9 @@ export class JourneysComponent implements OnInit {
             return: journey.return || null,
             users: journey.users || null
           };
-          //Time conversion 
+          //Time conversion
           const formattedTime = new Date(journey.durationInSeconds * 1000).toLocaleTimeString('en-US', { hour12: false });
-          // meter to kilimeter
+          // meter to kilometer
           const lengthInKiloMeters = journey.coveredDistanceInMeters > 1000 ? `${(journey.coveredDistanceInMeters / 1000).toFixed(2)} KM` : `${journey.coveredDistanceInMeters.toFixed(2)} M`;
           const completed = journey.returnStationId !== null && journey.return !== null && journey.returnStationId !== 0;
           return { departureStation, returnStation, users, completed, trip, formattedTime, lengthInKiloMeters };
@@ -240,11 +240,8 @@ export class JourneysComponent implements OnInit {
         // Sort the journeys based on the timestamp, with the latest first
         mappedJourneys.sort((a, b) => b.trip?.id - a.trip?.id);
         // Slice the array to only show the latest ten entries
-        const latestJourneys = mappedJourneys.slice(0, 5);
-
         // Update the journeys array with the latest journeys
-
-        this.journeys = latestJourneys;
+        this.journeys = mappedJourneys.slice(0, 5);
 
 
 

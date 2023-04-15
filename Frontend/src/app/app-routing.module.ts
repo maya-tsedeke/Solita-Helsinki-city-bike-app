@@ -15,15 +15,15 @@ const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full' },
   {path:'login',component:LoginComponent, data: { title: 'User Login' }},
   {path:'signup',component:SignupComponent, data: { title: 'User SignUp' }},
-  {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard], data: { title: 'User Dashboard' }},
+  {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard], data: { title: 'Customer Dashboard' }},
   { path: '', redirectTo: 'login', pathMatch: 'full',data: { title: 'User Login' }},
   { path: 'report/:id', component: StationDetailsComponent,canActivate:[AuthGuard],data: { title: 'Single view and Location on the map' }},
   {path:'station-list',component:ListStationComponent, canActivate:[AuthGuard],data: { title: 'Bike station list' }},
   {path:'creat-station',component:CreatStationComponent, canActivate:[AuthGuard],data: { title: 'Create new station' }},
   { path: 'update-station/:id', component: CreatStationComponent,canActivate:[AuthGuard],data: { title: 'Update existing Station Details' }},
-  { path: 'import', component: ImportComponent,canActivate:[AuthGuard],data: { title: 'Import station or Journey' }},
+  { path: 'import', component: ImportComponent,canActivate:[AuthGuard],data: { title: 'Import station and Journey' }},
   { path: 'journey', component: JourneysComponent,canActivate:[AuthGuard],data: { title: 'Customer Service' }},
-  
+
 ];
 
 @NgModule({

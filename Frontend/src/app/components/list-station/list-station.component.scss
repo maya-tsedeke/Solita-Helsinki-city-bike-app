@@ -1,7 +1,7 @@
 /* Responsive table */
 .table-responsive {
   overflow-x: auto;
-  
+
 }
 
 /* Table styles */
@@ -10,6 +10,7 @@
   margin-bottom: 1rem;
   color: #212529;
   border-collapse: collapse;
+
 }
 
 /* Table header styles */
@@ -26,6 +27,7 @@
   font-size: 14px;
   font-weight: 300;
   color: #444;
+
 }
 
 /* Table footer styles */
@@ -70,35 +72,6 @@ button:disabled {
   background-color: #ccc;
   cursor: default;
 }
-/*delete button style*/
-.delete-button {
-  position: relative;
-  padding-bottom: 0%;
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
-  background-color: #dc3545;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-/*position the bi-trash icon at the center*/
-.delete-button .bi-trash {
-  display: block;
-  margin: auto;
-}
-
-.delete-button:hover {
-  background-color: #c82333;
-}
-
-
-.delete-button:disabled {
-  background-color: #ccc;
-  cursor: default;
-}
 
 /* Content styles */
 .content {
@@ -117,20 +90,19 @@ td {
 /* Row padding styles */
 tr td:first-child,
 tr th:first-child {
-  padding-left: 0;
-
+  line-height: 0px;
 }
 
 tr td:last-child,
 tr th:last-child {
-  padding-right: 0;
-  line-height: normal;
+  padding: 0px 0px 5px 2px;
 }
 
 /* Media queries */
 @media only screen and (max-width: 768px) {
   .table {
     font-size: 12px;
+
   }
 
   .th-heading {
@@ -140,7 +112,7 @@ tr th:last-child {
 
   .tbody {
     font-size: 12px;
-    padding: 8px 12px;
+    padding: 4px 6px;
   }
 
   .tfoot {
@@ -149,17 +121,17 @@ tr th:last-child {
   }
 
   input[type="text"] {
-    font-size: 14px;
+    font-size: 10px;
   }
 
   button {
     font-size: 12px;
-    padding: 8px 12px;
+    padding: 4px 6px;
   }
 
   th,
   td {
-    padding: 8px 12px;
+    padding: 4px 6px;
   }
 }
 

@@ -169,7 +169,7 @@ export class CreatStationComponent implements OnInit {
 
         if (control && control.errors) {
           const errors = control.errors;
-          let errorMessage = '';
+          let errorMessage: string;
 
           // Display error message based on the type of error
           if (errors['required']) {
@@ -224,7 +224,7 @@ export class CreatStationComponent implements OnInit {
                   this.stationForm.patchValue({
                     id: ''
                   });
-                 
+
                   this.router.navigate(['/station-list']);
                 },
                 error: (error) => {

@@ -5,7 +5,7 @@ import { Station } from 'src/app/Interfaces/station-details';
   selector: 'app-deletestation',
   template: `
     <button class="btn btn-sm btn-danger" title="Delete" (click)="deleteClicked.emit()">
-      <span class="bi bi-trash"></span>
+       <span class="fa fa-trash-alt"></span>
     </button>
   `,
   styleUrls: ['./deletestation.component.scss']

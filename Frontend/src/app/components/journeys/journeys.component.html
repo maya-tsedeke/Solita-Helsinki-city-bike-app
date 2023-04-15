@@ -13,7 +13,7 @@
                 <button *ngIf="completedJourneysCount === 0; else startTimerButton" type="submit"
                     class="btn btn-primary" id="startButton">Start</button>
                 <ng-template #startTimerButton>
-                    <button type="submit" class="btn btn-primary" id="startButton" disabled>Started
+                    <button type="submit" class="btn btn-primary" id="startButton2" disabled>Started
                         ({{completedJourneysCount}})</button>
                 </ng-template>
             </form>
@@ -27,7 +27,7 @@
     <div class="row cell2">
 
 
-        <h2>Journey History</h2>
+        <h2>Journey End</h2>
         <div class="journey-list">
             <div class="journey-item">
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import ValidateForm from 'src/app/helper/validateform';
 import { AuthService } from 'src/app/Services/auth.service';
@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class SignupComponent implements OnInit {
   type:string="password";
- 
+
   isText:boolean=false;
   eyeIcon:string="fa-eye-slash";
   signUpForm!:FormGroup;
@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
       email: ['',Validators.required],
       password: ['',Validators.required],
       confirmPassword: ['',Validators.required]
-      
+
     })
   }
   hideShowPass(){

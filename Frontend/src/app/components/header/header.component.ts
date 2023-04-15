@@ -13,7 +13,7 @@ constructor(private auth: AuthService){}
 ngOnInit(): void {
   console.log('IsLoggedIn:', this.auth.isLoggedIn());
 console.log('UserName:', this.auth.getUserName());
- 
+
 }
 SideNavToggle(){
   this.menuStatus = !this.menuStatus;
