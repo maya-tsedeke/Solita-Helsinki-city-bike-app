@@ -10162,11 +10162,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj",
       "projectName": "Backend.Infrastructure",
-      "projectPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\tshabe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\Backend\\Backend.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\tshabe\\Documents\\GitHub\\Solita-Helsinki-city-bike-app\\backend\\Backend.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
