@@ -1,5 +1,6 @@
 
 ## Helsinki city bike app (Dev Academy pre-assignment solution)
+You can access the application through the following URL: https://solitawebapp.azurewebsites.net/
 ### Description of the Project
 A brief description of what this project does and who it's for
 
