@@ -196,7 +196,7 @@ To run the tests locally, follow these instructions:
  ```
 ##### Frontend
 1. Open a command prompt in the frontend folder.
-2. Run ng e2e to run the E2E tests.
+2. Run ng e2e to run the E2E tests in cypress.
 ```bash
  ng e2e
  ```
