@@ -272,7 +272,7 @@ namespace Backend.Api.Controllers
             }
         }
         [HttpGet("{userId:int}/User")]
-        [Authorize]
+
         public async Task<IEnumerable<JourneyDto>> GetJourneysByUserId(int userId)
         {
             try

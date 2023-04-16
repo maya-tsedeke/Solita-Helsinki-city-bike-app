@@ -46,7 +46,8 @@ export class JourneysComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder, private api: ApiService, private toast: NgToastService
-    , private auth: AuthService,) {
+    , private auth: AuthService,
+    ) {
     this.form = this.fb.group({
       departureStationId: ['', Validators.required],
     });
@@ -184,8 +185,10 @@ export class JourneysComponent implements OnInit {
   }
 
   onStatus() {
+   
     this.api.getJourneysByLoginId(this.currentUserId).subscribe({
       next: (journeys: Journey[]) => {
+      
         const mappedJourneys = journeys.map((journey: Journey) => {
           const departureStation: Station = {
             id: journey.departureStationId || 0,
@@ -233,8 +236,10 @@ export class JourneysComponent implements OnInit {
           //Time conversion
           const formattedTime = new Date(journey.durationInSeconds * 1000).toLocaleTimeString('en-US', { hour12: false });
           // meter to kilometer
-          const lengthInKiloMeters = journey.coveredDistanceInMeters > 1000 ? `${(journey.coveredDistanceInMeters / 1000).toFixed(2)} KM` : `${journey.coveredDistanceInMeters.toFixed(2)} M`;
+          const lengthInKiloMeters = journey.coveredDistanceInMeters ? (journey.coveredDistanceInMeters > 1000 ? `${(journey.coveredDistanceInMeters / 1000).toFixed(2)} KM` : `${journey.coveredDistanceInMeters.toFixed(2)} M`) : '';
+
           const completed = journey.returnStationId !== null && journey.return !== null && journey.returnStationId !== 0;
+         
           return { departureStation, returnStation, users, completed, trip, formattedTime, lengthInKiloMeters };
         });
         // Sort the journeys based on the timestamp, with the latest first
@@ -242,19 +247,11 @@ export class JourneysComponent implements OnInit {
         // Slice the array to only show the latest ten entries
         // Update the journeys array with the latest journeys
         this.journeys = mappedJourneys.slice(0, 5);
-
-
-
         const completedJourneysCount = mappedJourneys.reduce((count, journey) => {
           return !journey.completed ? count + 1 : count;
         }, 0);
         this.completedJourneysCount = completedJourneysCount;
-
-        if (completedJourneysCount > 0) {
-          this.pouseTimer();
-          this.startTimer();
-        }
-
+    
       },
 
       error: (err: any) => {

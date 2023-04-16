@@ -31,6 +31,7 @@ import { JourneysComponent } from './components/journeys/journeys.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +46,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     DeletestationComponent,
     ImportComponent,
     JourneysComponent,
+
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
