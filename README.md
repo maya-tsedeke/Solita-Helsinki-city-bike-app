@@ -1,5 +1,5 @@
 
-## Helsinki city bike app (Dev Academy pre-assignment solution)
+## Helsinki city bike app 
 You can access the application through the following URL: https://solitawebapp.azurewebsites.net/
 ### Description of the Project
 A brief description of what this project does and who it's for
@@ -200,7 +200,7 @@ To run the tests locally, follow these instructions:
 ```bash
  ng e2e
  ```
-### TODO](#todo)
+### TODO
 <a name="todo---todo-"></a>
 As this project is developed with clean architecture design and repository patterns, we aim to implement SOLID principles to ensure reliability and maintainability. To achieve this goal, we have identified the following areas for improvement:
 
