@@ -17,7 +17,7 @@ namespace Backend.Api.Controllers
             _stationService = stationService;
             _validator = validator;
         }
-        [HttpPost("Create")]
+        [HttpPost("Creat")]
         [Authorize]
         public async Task<IActionResult> CreateStation([FromBody] StationDto stationDto)
         {
